@@ -28,37 +28,39 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full z-50">
-      {/* 🔹 Promotional Bar */}
+      {/* Promotional Bar */}
       {!scrolled && (
         <div className="bg-gradient-to-r from-teal-500 via-indigo-500 to-purple-600 text-white text-sm font-medium py-2 text-center shadow-md">
           Empowering Global IT Success: Training, Project Support & Recruitment - USA | Canada | Luxembourg | India - contact@rvit.co.in
         </div>
       )}
 
-      {/* 🔹 Navbar */}
+      {/* Navbar */}
       <header
         className={`transition-all duration-300 ${
           scrolled
-            ? "bg-white shadow-lg" // when scrolled -> white background, black logo visible
-            : "bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100" // light gradient background
+            ? "bg-white shadow-lg"
+            : "bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100"
         }`}
       >
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/assets/logo.png"
-                alt="RVIT Logo"
-                width={140}
-                height={40}
-                priority
-                className="h-10 w-auto object-contain"
-              />
-            </Link>
+            <div className="flex-shrink-0 mr-8">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/assets/logo.png"
+                  alt="RVIT Logo"
+                  width={140}
+                  height={40}
+                  priority
+                  className="h-10 w-auto object-contain"
+                />
+              </Link>
+            </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            {/* Middle Navigation */}
+            <nav className="hidden md:flex flex-1 items-center justify-center space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -72,15 +74,17 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+            </nav>
 
-              {/* Contact Us Button */}
+            {/* Contact Us Button */}
+            <div className="flex-shrink-0 ml-8 hidden md:block">
               <Link
                 href="/contactus"
-                className="ml-6 bg-gradient-to-r from-indigo-600 to-teal-500 text-white px-5 py-2 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="bg-gradient-to-r from-indigo-600 to-teal-500 text-white px-5 py-2 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
               >
                 Contact Us
               </Link>
-            </nav>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
