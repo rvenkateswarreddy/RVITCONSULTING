@@ -1,7 +1,8 @@
 "use client";
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -12,106 +13,137 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Industries', path: '/industries' },
-    { name: 'Corporate Training', path: '/corporate-training' },
-    { name: 'Project Support', path: '/project-support' },
-    { name: 'Global Recruitment', path: '/global-recruitment' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: "Industries", path: "/industries" },
+    { name: "Corporate Training", path: "/trainings" },
+    { name: "Project Support", path: "/projectsupports" },
+    { name: "Careers", path: "/careers" },
   ];
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-indigo-900 shadow-lg' : 'bg-indigo-950'}`}>
-      <div className="container mx-auto px-6 py-3">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <span className="text-white text-2xl font-bold">
-              RV<span className="text-teal-400">IT</span>
-            </span>
-            <span className="ml-2 text-white text-sm font-medium hidden md:block">
-              Global IT Solutions
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className={`text-sm font-medium transition-colors ${
-                  pathname === item.path
-                    ? 'text-teal-400'
-                    : 'text-white hover:text-teal-300'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-white focus:outline-none"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+    <div className="fixed w-full z-50">
+      {/* 🔹 Promotional Bar */}
+      {!scrolled && (
+        <div className="bg-gradient-to-r from-teal-500 via-indigo-500 to-purple-600 text-white text-sm font-medium py-2 text-center shadow-md">
+          Empowering Global IT Success: Training, Project Support & Recruitment - USA | Canada | Luxembourg | India - contact@rvit.co.in
         </div>
+      )}
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            <nav className="flex flex-col space-y-3">
+      {/* 🔹 Navbar */}
+      <header
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "bg-white shadow-lg" // when scrolled -> white background, black logo visible
+            : "bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100" // light gradient background
+        }`}
+      >
+        <div className="container mx-auto px-6 py-5">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/assets/logo.png"
+                alt="RVIT Logo"
+                width={140}
+                height={40}
+                priority
+                className="h-10 w-auto object-contain"
+              />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className={`px-3 py-2 rounded-md text-base font-medium ${
+                  className={`text-sm font-medium tracking-wide transition-all ${
                     pathname === item.path
-                      ? 'bg-indigo-800 text-teal-400'
-                      : 'text-white hover:bg-indigo-800 hover:text-teal-300'
+                      ? "text-teal-600 border-b-2 border-teal-600 pb-1"
+                      : "text-gray-800 hover:text-indigo-600"
                   }`}
-                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
+
+              {/* Contact Us Button */}
+              <Link
+                href="/contactus"
+                className="ml-6 bg-gradient-to-r from-indigo-600 to-teal-500 text-white px-5 py-2 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+              >
+                Contact Us
+              </Link>
             </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-gray-900 focus:outline-none"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {mobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
           </div>
-        )}
-      </div>
-    </header>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4">
+              <nav className="flex flex-col space-y-3">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.path}
+                    className={`px-3 py-2 rounded-md text-base font-medium ${
+                      pathname === item.path
+                        ? "bg-gray-200 text-indigo-700"
+                        : "text-gray-800 hover:bg-gray-100 hover:text-indigo-600"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+
+                <Link
+                  href="/contactus"
+                  className="mt-4 bg-gradient-to-r from-indigo-600 to-teal-500 text-white px-5 py-2 rounded-full font-semibold shadow-md text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact Us
+                </Link>
+              </nav>
+            </div>
+          )}
+        </div>
+      </header>
+    </div>
   );
 };
 

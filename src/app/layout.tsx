@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -18,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'RV IT Consulting | Global IT Solutions & Services',
     description: 'Comprehensive IT solutions including corporate training, project support, and global recruitment services.',
-    url: 'https://www.rvitconsulting.com',
+    url: 'https://www.rvit.co.in',
     siteName: 'RV IT Consulting',
     images: [
       {
@@ -57,7 +55,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-white text-gray-800 antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main className="flex-grow">
+          <main className="flex-grow mt-12">
             {children}
           </main>
           <Footer />
