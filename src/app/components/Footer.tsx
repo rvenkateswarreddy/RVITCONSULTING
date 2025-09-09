@@ -106,25 +106,17 @@ export default function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold text-black">Contact Us</h4>
             <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <MapPin className="flex-shrink-0 mt-1 text-cyan-500" size={18} />
-                <span className="text-black">123 Tech Park, Silicon Valley, CA 94025</span>
-              </div>
+             
               <div className="flex items-center space-x-3">
                 <Mail className="text-cyan-500" size={18} />
                 <a href="mailto:contact@rvit.co.in" className="text-black hover:text-cyan-500 transition-colors">
                   contact@rvit.co.in
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="text-cyan-500" size={18} />
-                <a href="tel:+18005551234" className="text-black hover:text-cyan-500 transition-colors">
-                  +1 (800) 555-1234
-                </a>
-              </div>
+             
               <div className="flex items-center space-x-3">
                 <Clock className="text-cyan-500" size={18} />
-                <span className="text-black">Mon-Fri: 9AM - 6PM</span>
+                <span className="text-black">24/7 support</span>
               </div>
             </div>
           </div>
