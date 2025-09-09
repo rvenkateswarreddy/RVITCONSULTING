@@ -37,9 +37,9 @@ export default function Home() {
       <Suspense>
         <IndustriesSection/>
       </Suspense>
-      <Suspense>
+      {/* <Suspense>
         <TestimonialSection/>
-      </Suspense>
+      </Suspense> */}
  
     </main>
   );
