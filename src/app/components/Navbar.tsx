@@ -28,7 +28,6 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full z-50">
-  
       {!scrolled && (
         <div className="bg-gradient-to-r from-teal-500 via-indigo-500 to-purple-600 text-white text-sm font-medium py-2 text-center shadow-md">
           Empowering Global IT Success: Training, Project Support & Recruitment - USA | Canada | Luxembourg | India - contact@rvit.co.in
@@ -44,23 +43,21 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-6 py-5">
-          <div className="flex items-center justify-between">
-        
-            <div className="flex-shrink-0 mr-8 ">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/assets/image.png"
-                  alt="RVIT Logo"
-                  width={100}
-                  height={100}
-                  priority
-                  className="object-contain"
-                />
-              </Link>
-            </div>
+          <div className="flex items-center justify-between gap-6">
+            {/* Logo */}
+            <Link href="/" className="flex items-center flex-shrink-0">
+              <Image
+                src="/assets/image.png"
+                alt="RVIT Logo"
+                width={100}
+                height={80}
+                className="w-20 object-contain"
+                priority
+              />
+            </Link>
 
-           
-            <nav className="hidden md:flex flex-1 items-center justify-center space-x-8">
+            {/* Nav Links */}
+            <nav className="hidden md:flex flex-1 items-center justify-center gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -77,7 +74,7 @@ const Navbar = () => {
             </nav>
 
             {/* Contact Us Button */}
-            <div className="flex-shrink-0 ml-8 hidden md:block">
+            <div className="hidden md:block flex-shrink-0">
               <Link
                 href="/contactus"
                 className="bg-gradient-to-r from-indigo-600 to-teal-500 text-white px-5 py-2 rounded-full font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
@@ -119,7 +116,7 @@ const Navbar = () => {
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4">
-              <nav className="flex flex-col space-y-3">
+              <nav className="flex flex-col gap-3">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
