@@ -15,10 +15,10 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-2 mb-2">
               <Image
-                src="/assets/logo.png"
+                src="/assets/image.png"
                 alt="RV IT Logo"
-                width={60}
-                height={50}
+                width={80}
+                height={80}
               
                 priority
               />

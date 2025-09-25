@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full z-50">
-      {/* Promotional Bar */}
+  
       {!scrolled && (
         <div className="bg-gradient-to-r from-teal-500 via-indigo-500 to-purple-600 text-white text-sm font-medium py-2 text-center shadow-md">
           Empowering Global IT Success: Training, Project Support & Recruitment - USA | Canada | Luxembourg | India - contact@rvit.co.in
@@ -45,21 +45,21 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex-shrink-0 mr-8">
+        
+            <div className="flex-shrink-0 mr-8 ">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/assets/logo.png"
+                  src="/assets/image.png"
                   alt="RVIT Logo"
-                  width={140}
-                  height={40}
+                  width={100}
+                  height={100}
                   priority
-                  className="h-10 w-auto object-contain"
+                  className="object-contain"
                 />
               </Link>
             </div>
 
-            {/* Middle Navigation */}
+           
             <nav className="hidden md:flex flex-1 items-center justify-center space-x-8">
               {navItems.map((item) => (
                 <Link
