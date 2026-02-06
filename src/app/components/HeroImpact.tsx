@@ -47,7 +47,7 @@ export default function HeroImpact() {
 
   return (
     <section
-      className="relative w-full h-[82vh] min-h-[560px] overflow-hidden text-white bg-[#060A2B]"
+      className="relative w-full h-[82vh] min-h-[560px] pt-20 overflow-hidden text-white bg-[#060A2B]"
       aria-label="Hero"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

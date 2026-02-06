@@ -14,7 +14,7 @@ import TestimonialSection from "./components/TestimonialSection";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <div className="relative">
       <Suspense>
         <HeroImpact />
       </Suspense>
@@ -41,6 +41,6 @@ export default function Home() {
         <TestimonialSection/>
       </Suspense> */}
  
-    </main>
+    </div>
   );
 }

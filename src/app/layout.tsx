@@ -55,7 +55,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-white text-gray-800 antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main className="flex-grow mt-12">
+          <main className="flex-grow pt-32">
             {children}
           </main>
           <Footer />
