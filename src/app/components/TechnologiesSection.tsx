@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiNodedotjs, SiTailwindcss,
+  SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss,
   SiGraphql, SiDocker, SiKubernetes, SiGooglecloud, SiFirebase, SiRedux,
   SiMongodb, SiPostgresql, SiMysql, SiJenkins, SiGit, SiGithub, SiGitlab,
   SiBitbucket, SiSass, SiHtml5, SiCss3, SiFigma, SiVercel, SiNetlify,

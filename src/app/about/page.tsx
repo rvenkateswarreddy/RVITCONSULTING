@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { CheckCircle, Users, Target, Award, Globe, Lightbulb } from 'lucide-react';
+import { CheckCircle, Target, Award, Lightbulb } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us | RV IT Consulting',
@@ -37,7 +37,7 @@ export default function AboutPage() {
                 serving clients across multiple continents.
               </p>
               <p className="text-gray-600 mb-4">
-                Over the past 5 years, we've successfully delivered enterprise-level solutions 
+                Over the past 5 years, we&apos;ve successfully delivered enterprise-level solutions 
                 to diverse industries, helping businesses leverage technology to achieve their 
                 strategic objectives and drive growth.
               </p>
@@ -181,7 +181,7 @@ export default function AboutPage() {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how we can help you achieve your technology goals
+            Let&apos;s discuss how we can help you achieve your technology goals
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

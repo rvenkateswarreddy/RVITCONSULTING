@@ -1,15 +1,15 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import HeroImpact from "./components/HeroImpact";
-import Services from "./components/Services";
-import WhyChooseUs from "./components/WhyChooseUs";
+import HeroSection from "./components/HeroSection";
+import ServicesSection from "./components/ServicesSection";
+import WhyChooseUsSection from "./components/WhyChooseUsSection";
 import ProjectSupportSection from "./components/ProjectSupportSection";
 import TechnologiesSection from "./components/TechnologiesSection";
 import RecruitmentSection from "./components/RecruitmentSection";
 import IndustriesSection from "./components/IndustriesSection";
-import TestimonialSection from "./components/TestimonialSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import HeroImpact from "./components/HeroImpact";
 
 
 export default function Home() {
@@ -19,12 +19,11 @@ export default function Home() {
         <HeroImpact />
       </Suspense>
       <Suspense>
-        <Services />
+        <ServicesSection />
       </Suspense>
       <Suspense>
-        <WhyChooseUs />
-      </Suspense>
-    
+        <WhyChooseUsSection />
+      </Suspense>   
       <Suspense>
         <ProjectSupportSection />
       </Suspense>
@@ -37,9 +36,9 @@ export default function Home() {
       <Suspense>
         <IndustriesSection/>
       </Suspense>
-      {/* <Suspense>
-        <TestimonialSection/>
-      </Suspense> */}
+      <Suspense>
+        <TestimonialsSection/>
+      </Suspense>
  
     </div>
   );

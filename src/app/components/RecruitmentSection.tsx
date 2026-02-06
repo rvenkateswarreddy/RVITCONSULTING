@@ -40,7 +40,7 @@ export default function RecruitmentSection() {
   const [form, setForm] = useState({ name: "", email: "", service: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<{ name?: string; email?: string; service?: string; submit?: string }>({});
-  const [success, setSuccess] = useState(false);
+  const [, setSuccess] = useState(false);
 
   const validateForm = () => {
     const errors: { name?: string; email?: string; service?: string } = {};
@@ -73,8 +73,9 @@ export default function RecruitmentSection() {
     } catch (err) {
       setError({ submit: "Failed to submit. Please try again." });
       toast.error("Failed to submit. Please try again.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (

@@ -26,7 +26,9 @@ export default function HeroImpact() {
   // Auto-rotate using a timer (no rAF race conditions)
   useEffect(() => {
     if (reducedMotion || isPaused) return;
-    timerRef.current && clearTimeout(timerRef.current);
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
     timerRef.current = setTimeout(() => setIndex((i) => (i + 1) % TABS.length), DURATION_MS);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);

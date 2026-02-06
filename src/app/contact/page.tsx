@@ -19,7 +19,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Ready to transform your business with cutting-edge IT solutions? 
-              We're here to help you achieve your technology goals.
+              We&apos;re here to help you achieve your technology goals.
             </p>
           </div>
         </div>

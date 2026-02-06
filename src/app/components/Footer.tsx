@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Clock, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
+import { Mail, Clock, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,11 +15,11 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center space-x-2 mb-2">
               <Image
-                src="/assets/image.png"
+                src="/LOGO.png"
                 alt="RV IT Logo"
-                width={80}
+                width={100}
                 height={80}
-              
+                className="w-20 object-contain"
                 priority
               />
              

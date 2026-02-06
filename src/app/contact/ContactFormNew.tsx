@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, Globe } from 'lucide-react';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../../../FirebaseConfig';
 
-export default function ContactForm() {
+export default function ContactFormNew() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,9 +12,6 @@ export default function ContactForm() {
     service: '',
     message: ''
   });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -25,34 +20,9 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess(false);
-
-    try {
-      await addDoc(collection(db, 'contactSubmissions'), {
-        ...formData,
-        timestamp: new Date(),
-        status: 'new'
-      });
-      
-      setSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: ''
-      });
-    } catch (err) {
-      setError('Failed to submit form. Please try again.');
-      console.error('Error submitting form:', err);
-    } finally {
-      setLoading(false);
-    }
+    console.log('Form submitted:', formData);
   };
 
   return (
@@ -70,7 +40,7 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter your full name"
+            placeholder="John Doe"
           />
         </div>
         <div>
@@ -162,65 +132,16 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
-      {/* Success Message */}
-      {success && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-green-800">
-                Thank you for your message! We'll get back to you within 24 hours.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Error Message */}
-      {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-red-800">
-                {error}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">
-          * Required fields. We&apos;ll never share your information with third parties.
+          * Required fields. We will never share your information with third parties.
         </p>
         <button
           type="submit"
-          disabled={loading}
-          className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center space-x-2"
         >
-          {loading ? (
-            <>
-              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>Sending...</span>
-            </>
-          ) : (
-            <>
-              <Send size={18} />
-              <span>Send Message</span>
-            </>
-          )}
+          <Send size={18} />
+          <span>Send Message</span>
         </button>
       </div>
     </form>

@@ -36,18 +36,15 @@ const Navbar = () => {
 
       {/* Navbar */}
       <header
-        className={`transition-all duration-300 ${
-          scrolled
-            ? "bg-white shadow-lg"
-            : "bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100"
+        className={`transition-all duration-300 bg-white 
         }`}
       >
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between gap-6">
             {/* Logo */}
-            <Link href="/" className="flex items-center flex-shrink-0">
+            <Link href="/" className="flex items-center flex-shrink-0 ml-8">
               <Image
-                src="/assets/image.png"
+                src="/LOGO.png"
                 alt="RVIT Logo"
                 width={100}
                 height={80}
