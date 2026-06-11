@@ -1,226 +1,142 @@
 "use client";
 
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare, Globe } from 'lucide-react';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../../../FirebaseConfig';
+import { useState } from "react";
+import { CheckCircle, Send } from "lucide-react";
+import { functionsEndpoint } from "@/lib/functions-api";
+
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  service: "",
+  message: "",
+  website: "",
+};
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    service: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState(initialForm);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [reference, setReference] = useState("");
+  const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    setFormData((current) => ({
+      ...current,
+      [event.target.name]: event.target.value,
+    }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setLoading(true);
-    setError('');
-    setSuccess(false);
+    setError("");
+    setReference("");
 
     try {
-      await addDoc(collection(db, 'contactSubmissions'), {
-        ...formData,
-        timestamp: new Date(),
-        status: 'new'
+      const response = await fetch(functionsEndpoint("submitContact"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-      
-      setSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: ''
-      });
-    } catch (err) {
-      setError('Failed to submit form. Please try again.');
-      console.error('Error submitting form:', err);
+      const result = await response.json();
+
+      if (!response.ok) throw new Error(result.error || "Submission failed.");
+
+      setReference(result.reference || "Submitted");
+      setFormData(initialForm);
+    } catch (submissionError) {
+      setError(
+        submissionError instanceof Error
+          ? submissionError.message
+          : "We could not submit your enquiry.",
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  const fieldClass =
+    "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-[#081B33] transition focus:border-blue-600 focus:ring-2 focus:ring-blue-200";
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="relative space-y-6">
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.website}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-            Full Name *
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter your full name"
-          />
+          <label htmlFor="name" className="mb-2 block text-sm font-bold text-slate-700">Full name *</label>
+          <input id="name" name="name" required maxLength={100} value={formData.name} onChange={handleChange} className={fieldClass} autoComplete="name" />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="john@example.com"
-          />
+          <label htmlFor="email" className="mb-2 block text-sm font-bold text-slate-700">Work email *</label>
+          <input id="email" name="email" type="email" required maxLength={160} value={formData.email} onChange={handleChange} className={fieldClass} autoComplete="email" />
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="+1 (555) 123-4567"
-          />
+          <label htmlFor="phone" className="mb-2 block text-sm font-bold text-slate-700">Phone</label>
+          <input id="phone" name="phone" type="tel" maxLength={40} value={formData.phone} onChange={handleChange} className={fieldClass} autoComplete="tel" />
         </div>
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-            Company Name
-          </label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Acme Corporation"
-          />
+          <label htmlFor="company" className="mb-2 block text-sm font-bold text-slate-700">Company</label>
+          <input id="company" name="company" maxLength={120} value={formData.company} onChange={handleChange} className={fieldClass} autoComplete="organization" />
         </div>
       </div>
 
       <div>
-        <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-          Service Interested In *
-        </label>
-        <select
-          id="service"
-          name="service"
-          required
-          value={formData.service}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        >
-          <option value="">Select a Service</option>
-          <option value="it-consulting">IT Consulting</option>
-          <option value="corporate-training">Corporate Training</option>
-          <option value="project-support">Project Support</option>
-          <option value="recruitment">Global Recruitment</option>
-          <option value="cloud-solutions">Cloud Solutions</option>
-          <option value="cybersecurity">Cybersecurity</option>
-          <option value="data-analytics">Data Analytics</option>
-          <option value="software-development">Software Development</option>
-          <option value="other">Other</option>
+        <label htmlFor="service" className="mb-2 block text-sm font-bold text-slate-700">How can we help? *</label>
+        <select id="service" name="service" required value={formData.service} onChange={handleChange} className={fieldClass}>
+          <option value="">Select a service</option>
+          <option value="IT consulting">IT consulting</option>
+          <option value="Cloud modernization">Cloud modernization</option>
+          <option value="Data and analytics">Data and analytics</option>
+          <option value="Cybersecurity">Cybersecurity</option>
+          <option value="Software engineering">Software engineering</option>
+          <option value="Project support">Project support</option>
+          <option value="Technology recruitment">Technology recruitment</option>
+          <option value="Corporate training">Corporate training</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          Message *
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={6}
-          value={formData.message}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="Tell us about your project or requirements..."
-        ></textarea>
+        <label htmlFor="message" className="mb-2 block text-sm font-bold text-slate-700">Tell us about the challenge *</label>
+        <textarea id="message" name="message" required minLength={10} maxLength={3000} rows={6} value={formData.message} onChange={handleChange} className={fieldClass} />
       </div>
 
-      {/* Success Message */}
-      {success && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-green-800">
-                Thank you for your message! We'll get back to you within 24 hours.
-              </p>
-            </div>
-          </div>
+      {reference && (
+        <div className="flex gap-3 rounded-md border border-emerald-200 bg-emerald-50 p-4 text-emerald-900" role="status" aria-live="polite">
+          <CheckCircle className="mt-0.5 shrink-0" size={20} aria-hidden />
+          <p className="text-sm font-semibold">Enquiry received. Reference: {reference}</p>
         </div>
       )}
 
-      {/* Error Message */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-red-800">
-                {error}
-              </p>
-            </div>
-          </div>
+        <div className="rounded-md border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-800" role="alert">
+          {error} You can also email <a className="underline" href="mailto:contact@rvit.co.in">contact@rvit.co.in</a>.
         </div>
       )}
 
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">
-          * Required fields. We&apos;ll never share your information with third parties.
-        </p>
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {loading ? (
-            <>
-              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>Sending...</span>
-            </>
-          ) : (
-            <>
-              <Send size={18} />
-              <span>Send Message</span>
-            </>
-          )}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="max-w-md text-xs leading-5 text-slate-500">Your details are used only to respond to this enquiry and are handled according to our privacy policy.</p>
+        <button type="submit" disabled={loading} aria-busy={loading} className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60">
+          <Send size={17} aria-hidden />
+          {loading ? "Sending..." : "Send enquiry"}
         </button>
       </div>
     </form>

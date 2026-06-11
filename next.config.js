@@ -1,16 +1,58 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: '/contactus',
+        permanent: true,
+      },
+      {
+        source: '/it-consulting',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/cloud-solutions',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/data-analytics',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/cybersecurity',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/software-development',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/projectsupports',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/trainings',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/case-studies',
+        destination: '/services',
+        permanent: true,
+      },
+      {
+        source: '/portfolio',
+        destination: '/services',
+        permanent: true,
+      },
+    ]
   },
 }
 

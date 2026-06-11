@@ -1,154 +1,57 @@
-'use client';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import ContactForm from '../contact/ContactForm';
+import Image from "next/image";
+import { Clock, Mail, MessageSquare } from "lucide-react";
+import ContactForm from "../contact/ContactForm";
+import { createPageMetadata } from "../seo";
 
-const ContactPage = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
+export const metadata = createPageMetadata(
+  "Contact",
+  "Talk to RV IT Consulting about your technology priorities, delivery needs, talent requirements, or corporate training goals.",
+  "/contactus",
+);
 
-
+export default function ContactPage() {
   return (
-    <div className="bg-white">
-    
-      <section className="relative bg-gradient-to-r from-blue-900 to-gray-900 text-white py-32 px-4 overflow-hidden">
-       
-        <div className="max-w-7xl mx-auto relative z-10 text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-          >
-            Let us <span className="text-cyan-400">Connect</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl md:text-2xl max-w-4xl mx-auto mb-8"
-          >
-            Our team is ready to discuss your technology needs and answer any questions
-          </motion.p>
+    <>
+      <section className="relative overflow-hidden bg-[#081B33] text-white">
+        <Image
+          src="/assets/Industries/Education.webp"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center opacity-45"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.95)_50%,rgba(8,27,51,.55)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/75 via-transparent to-[#081B33]/20" />
+        <div className="site-container relative flex min-h-[500px] items-center py-24 md:py-28">
+          <div className="max-w-5xl">
+            <p className="eyebrow !text-cyan-300">Contact</p>
+            <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">Start with the challenge, not a sales pitch.</h1>
+            <p className="mt-7 max-w-3xl text-xl leading-9 text-slate-200">Tell us what you are trying to change, what is getting in the way, and where a thoughtful technology partner could help.</p>
+          </div>
         </div>
       </section>
 
-
-      {/* Contact Form */}
-      <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              Send Us a <span className="text-blue-600">Message</span>
-            </h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Fill out the form below and we will get back to you within 24 hours
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-xl shadow-lg overflow-hidden"
-          >
-            <div className="grid md:grid-cols-2">
-              <div className="p-8 md:p-12">
-                <ContactForm />
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="hidden md:block bg-gradient-to-br from-blue-700 to-cyan-600 p-8 md:p-12 relative"
-              >
-                <div className="absolute inset-0 opacity-10 bg-[url('/patterns/circuit-lines-white.svg')]"></div>
-                <div className="relative z-10 h-full flex flex-col justify-center text-white">
-                  <h3 className="text-2xl font-bold mb-6">Need immediate assistance?</h3>
-                  <p className="mb-8">Our support team is available 24/7 to address your urgent inquiries.</p>
-                  
-                  <div className="space-y-6">
-                    <div className="flex items-start">
-                      
-                      
-                    </div>
-
-                    <div className="flex items-start">
-                      <svg className="w-6 h-6 text-cyan-300 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                      </svg>
-                      <div>
-                        <h4 className="font-bold mb-1">Business Hours</h4>
-                        <p className="text-blue-100">Mon-Fri: 9AM - 6PM (GMT)</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <svg className="w-6 h-6 text-cyan-300 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                      </svg>
-                      <div>
-                        <h4 className="font-bold mb-1">Response Time</h4>
-                        <p className="text-blue-100">Typically within 1 business day</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+      <section className="py-20 md:py-28">
+        <div className="site-container grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
+          <aside>
+            <p className="eyebrow">Talk to RV IT</p>
+            <h2 className="display-font mt-5 text-3xl font-semibold tracking-[-0.035em] text-[#081B33]">A useful first conversation.</h2>
+            <p className="mt-5 leading-7 text-slate-600">No lengthy procurement form. Share enough context for us to bring the right person into the conversation.</p>
+            <div className="mt-10 space-y-6 border-t border-slate-200 pt-7">
+              <div className="flex gap-4"><Mail className="mt-1 text-blue-600" size={20} aria-hidden /><div><p className="font-extrabold text-[#081B33]">Email</p><a href="mailto:contact@rvit.co.in" className="mt-1 block text-slate-600 hover:text-blue-600">contact@rvit.co.in</a></div></div>
+              <div className="flex gap-4"><Clock className="mt-1 text-blue-600" size={20} aria-hidden /><div><p className="font-extrabold text-[#081B33]">Response</p><p className="mt-1 text-slate-600">Typically within one business day</p></div></div>
+              <div className="flex gap-4"><MessageSquare className="mt-1 text-blue-600" size={20} aria-hidden /><div><p className="font-extrabold text-[#081B33]">What happens next</p><p className="mt-1 text-slate-600">A focused discovery conversation with a relevant consultant</p></div></div>
             </div>
-          </motion.div>
+          </aside>
+
+          <div className="border border-slate-200 bg-[#F8FAFC] p-6 shadow-[0_20px_60px_rgba(8,27,51,0.08)] md:p-10">
+            <h2 className="display-font text-3xl font-semibold tracking-[-0.035em] text-[#081B33]">Tell us what you are working on</h2>
+            <p className="mt-3 text-slate-600">Fields marked with * are required.</p>
+            <div className="mt-8"><ContactForm /></div>
+          </div>
         </div>
       </section>
-
-
-      {/* Final CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-6 text-gray-900"
-          >
-            Ready to Start Your Project?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto"
-          >
-            Schedule a free consultation with our technology experts today
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="flex flex-col sm:flex-row justify-center gap-4"
-          >
-            <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors shadow-lg">
-              Book a Meeting
-            </button>
-            <button className="px-8 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-bold rounded-lg transition-colors">
-              Request Callback
-            </button>
-          </motion.div>
-        </div>
-      </section>
-    </div>
+    </>
   );
-};
-
-export default ContactPage;
+}

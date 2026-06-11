@@ -1,145 +1,64 @@
-"use client";
-import Link from 'next/link';
-import Image from 'next/image';
-import { Mail, Clock, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
+import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
+import BrandLogo from "./BrandLogo";
+
+const serviceLinks = [
+  ["Digital engineering", "/services#digital-engineering"],
+  ["Cloud modernization", "/services#cloud-modernization"],
+  ["Data & intelligence", "/services#data-intelligence"],
+  ["Security & resilience", "/services#security-resilience"],
+  ["Talent & delivery", "/services#talent-delivery"],
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-white text-black border-t border-gray-200 pt-3.5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          
-          {/* Company Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-2 mb-2">
-              <Image
-                src="/LOGO.png"
-                alt="RV IT Logo"
-                width={100}
-                height={80}
-                className="w-20 object-contain"
-                priority
-              />
-             
-            </div>
-            <p className="text-black text-base">
-              5 years of Enterprise-level expertise serving diverse industries with cutting-edge IT solutions.
-            </p>
-            <div className="flex space-x-4">
-              <a href="https://linkedin.com/company/rvitconsulting" aria-label="LinkedIn" className="text-black hover:text-cyan-500 transition-colors">
-                <Linkedin size={22} />
-              </a>
-              <a href="https://twitter.com/rvitconsulting" aria-label="Twitter" className="text-black hover:text-cyan-500 transition-colors">
-                <Twitter size={22} />
-              </a>
-              <a href="https://facebook.com/rvitconsulting" aria-label="Facebook" className="text-black hover:text-cyan-500 transition-colors">
-                <Facebook size={22} />
-              </a>
-              <a href="https://instagram.com/rvitconsulting" aria-label="Instagram" className="text-black hover:text-cyan-500 transition-colors">
-                <Instagram size={22} />
-              </a>
-            </div>
+    <footer className="bg-[#081B33] text-white">
+      <div className="site-container py-16 md:py-20">
+        <div className="grid gap-12 border-b border-white/15 pb-14 lg:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <BrandLogo inverse />
+            <h2 className="display-font mt-5 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.04em] md:text-4xl">
+              Build the technology capability your next chapter needs.
+            </h2>
+            <Link href="/contactus" className="mt-8 inline-flex items-center gap-2 font-bold text-white hover:text-cyan-300">
+              Start a conversation <ArrowUpRight size={18} aria-hidden />
+            </Link>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-black mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/services" className="text-black hover:text-cyan-500 transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries" className="text-black hover:text-cyan-500 transition-colors">
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-black hover:text-cyan-500 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-black hover:text-cyan-500 transition-colors">
-                  Contact
-                </Link>
-              </li>
+            <h3 className="text-sm font-extrabold uppercase tracking-[0.12em] text-slate-400">Capabilities</h3>
+            <ul className="mt-5 space-y-3">
+              {serviceLinks.map(([label, path]) => (
+                <li key={path}>
+                  <Link href={path} className="text-sm text-slate-200 hover:text-white">
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold text-black mb-6">Services</h4>
-            <ul className="space-y-3">
+            <h3 className="text-sm font-extrabold uppercase tracking-[0.12em] text-slate-400">Company</h3>
+            <ul className="mt-5 space-y-3 text-sm text-slate-200">
+              <li><Link href="/about" className="hover:text-white">About us</Link></li>
+              <li><Link href="/industries" className="hover:text-white">Industries</Link></li>
+              <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
               <li>
-                <Link href="/it-consulting" className="text-black hover:text-cyan-500 transition-colors">
-                  IT Consulting
-                </Link>
-              </li>
-              <li>
-                <Link href="/cloud-solutions" className="text-black hover:text-cyan-500 transition-colors">
-                  Cloud Solutions
-                </Link>
-              </li>
-              <li>
-                <Link href="/cybersecurity" className="text-black hover:text-cyan-500 transition-colors">
-                  Cybersecurity
-                </Link>
-              </li>
-              <li>
-                <Link href="/data-analytics" className="text-black hover:text-cyan-500 transition-colors">
-                  Data Analytics
-                </Link>
-              </li>
-              <li>
-                <Link href="/software-development" className="text-black hover:text-cyan-500 transition-colors">
-                  Software Development
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold text-black">Contact Us</h4>
-            <div className="space-y-4">
-             
-              <div className="flex items-center space-x-3">
-                <Mail className="text-cyan-500" size={18} />
-                <a href="mailto:contact@rvit.co.in" className="text-black hover:text-cyan-500 transition-colors">
-                  contact@rvit.co.in
+                <a href="mailto:contact@rvit.co.in" className="inline-flex items-center gap-2 hover:text-white">
+                  <Mail size={15} aria-hidden /> contact@rvit.co.in
                 </a>
-              </div>
-             
-              <div className="flex items-center space-x-3">
-                <Clock className="text-cyan-500" size={18} />
-                <span className="text-black">24/7 support</span>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-200 mt-12"></div>
-
-        {/* Bottom Footer */}
-        <div className="mt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
-            &copy; {currentYear} RV IT CONSULTING. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy-policy" className="text-gray-500 hover:text-cyan-500 text-sm transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className="text-gray-500 hover:text-cyan-500 text-sm transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="/cookies" className="text-gray-500 hover:text-cyan-500 text-sm transition-colors">
-              Cookie Policy
-            </Link>
+        <div className="flex flex-col gap-4 pt-7 text-xs text-slate-400 md:flex-row md:items-center md:justify-between">
+          <p>&copy; {new Date().getFullYear()} RV IT Consulting. All rights reserved.</p>
+          <div className="flex flex-wrap gap-5">
+            <Link href="/privacy-policy" className="hover:text-white">Privacy</Link>
+            <Link href="/terms-of-service" className="hover:text-white">Terms</Link>
+            <Link href="/cookies" className="hover:text-white">Cookies</Link>
           </div>
         </div>
       </div>
