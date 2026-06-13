@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type BrandLogoProps = {
   inverse?: boolean;
   compact?: boolean;
@@ -10,28 +12,29 @@ export default function BrandLogo({
   className = "",
 }: BrandLogoProps) {
   return (
-    <span className={`inline-flex items-center ${className}`}>
-      <span
-        className={`mr-3 h-10 w-1 rounded-full ${
-          inverse ? "bg-cyan-300" : "bg-blue-600"
+    <span
+      role="img"
+      aria-label="RV IT"
+      className={`inline-flex shrink-0 items-center ${
+        inverse ? "rounded-md bg-white px-3 py-2 shadow-sm" : ""
+      } ${className}`}
+    >
+      <Image
+        src="/assets/brand/rv-it-logo-mark.png"
+        alt=""
+        width={567}
+        height={302}
+        priority
+        className={`w-auto object-contain ${
+          compact ? "h-8" : inverse ? "h-12" : "h-10"
         }`}
-        aria-hidden
+        sizes={compact ? "60px" : inverse ? "90px" : "76px"}
       />
       <span
-        className={`display-font font-extrabold tracking-[-0.055em] ${
-          inverse ? "text-white" : "text-[#081B33]"
-        } ${compact ? "text-xl" : "text-[21px]"}`}
+        className="ml-2 font-sans text-[17px] font-bold tracking-[0.16em] text-[#081B33]"
+        aria-hidden
       >
-        RV <span className={inverse ? "text-blue-300" : "text-blue-600"}>IT</span>
-        {!compact && (
-          <span
-            className={`mt-1 block text-[8px] font-extrabold uppercase tracking-[0.28em] ${
-              inverse ? "text-slate-300" : "text-slate-500"
-            }`}
-          >
-            Consulting
-          </span>
-        )}
+        IT
       </span>
     </span>
   );

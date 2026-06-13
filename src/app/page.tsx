@@ -99,7 +99,7 @@ export default function Home() {
         <div className="site-container grid gap-px bg-slate-200 sm:grid-cols-2 lg:grid-cols-4">
           {[
             ["7+ years", "Building practical technology solutions"],
-            ["Global delivery", "Supporting distributed teams and markets"],
+            ["5 key markets", "USA, Canada, Luxembourg, Finland, and India"],
             ["Flexible models", "Advisory, delivery, staffing, and training"],
             ["One accountable team", "From direction through implementation"],
           ].map(([value, label]) => (
