@@ -65,7 +65,7 @@ export default function AboutPage() {
 
       <section className="py-24">
         <div className="site-container grid gap-8 md:grid-cols-3">
-          {[["7+ years", "of focused technology consulting and delivery"], ["Multi-region", "experience supporting teams across the USA, Canada, Luxembourg, Finland, and India"], ["End-to-end", "support from strategy and staffing through delivery and training"]].map(([value, label]) => <div key={value} className="border-t-2 border-blue-600 pt-6"><p className="display-font text-4xl font-semibold tracking-[-0.04em] text-[#081B33]">{value}</p><p className="mt-3 max-w-xs leading-6 text-slate-600">{label}</p></div>)}
+          {[["7+ years", "of focused technology consulting and delivery"], ["Multi-region", "client experience across North America, Europe, the Middle East, Asia, and Africa"], ["End-to-end", "support from strategy and staffing through delivery and training"]].map(([value, label]) => <div key={value} className="border-t-2 border-blue-600 pt-6"><p className="display-font text-4xl font-semibold tracking-[-0.04em] text-[#081B33]">{value}</p><p className="mt-3 max-w-xs leading-6 text-slate-600">{label}</p></div>)}
         </div>
       </section>
 

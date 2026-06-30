@@ -12,6 +12,24 @@ const initialForm = {
   website: "",
 };
 
+const talentAreas = [
+  "Data Science",
+  "Generative AI (Gen AI)",
+  "Java Full Stack Development",
+  "Python",
+  "Power BI",
+  "Workday",
+  "Data Analyst",
+  "SaaS (Clinical & Banking Domain)",
+  "Data Engineer",
+  "Azure DevOps",
+  "ServiceNow",
+  "AWS Cloud",
+  "Web Development",
+  "iOS Development",
+  "Android Development",
+] as const;
+
 export default function CareersPage() {
   const [form, setForm] = useState(initialForm);
   const [resume, setResume] = useState<File | null>(null);
@@ -84,6 +102,32 @@ export default function CareersPage() {
         </div>
       </section>
 
+      <section className="bg-[#F8FAFC] py-20 md:py-24">
+        <div className="site-container">
+          <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="eyebrow">Talent areas</p>
+              <h2 className="section-title mt-5">Expertise we recruit for.</h2>
+            </div>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600">
+              Share your profile for current and future client assignments across these
+              technology and domain specializations.
+            </p>
+          </div>
+
+          <div className="mt-14 grid border-l border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-3">
+            {talentAreas.map((area, index) => (
+              <div key={area} className="flex min-h-28 items-start justify-between gap-5 border-b border-r border-slate-200 bg-white p-6">
+                <h3 className="font-extrabold leading-6 text-[#081B33]">{area}</h3>
+                <span className="text-xs font-extrabold text-slate-400">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 md:py-28">
         <div className="site-container grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
           <div>
@@ -135,12 +179,7 @@ export default function CareersPage() {
               <label htmlFor="career-area" className="mb-2 block text-sm font-bold text-slate-700">Primary area *</label>
               <select id="career-area" required className={fieldClass} value={form.job} onChange={(event) => setForm({ ...form, job: event.target.value })}>
                 <option value="">Select an area</option>
-                <option>Software engineering</option>
-                <option>Cloud and platform engineering</option>
-                <option>Data and analytics</option>
-                <option>Cybersecurity</option>
-                <option>Technology consulting</option>
-                <option>Project and delivery leadership</option>
+                {talentAreas.map((area) => <option key={area}>{area}</option>)}
                 <option>General application</option>
               </select>
             </div>
