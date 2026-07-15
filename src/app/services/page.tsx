@@ -14,8 +14,8 @@ const services = [
   ["Cloud modernization", "Move from fragmented infrastructure to secure, scalable cloud platforms and operating practices.", Cloud, "cloud-modernization", ["Cloud strategy and architecture", "Migration and modernization", "Platform engineering", "FinOps and operations"]],
   ["Data & intelligence", "Create trusted data foundations and turn information into decisions people can act on.", BarChart3, "data-intelligence", ["Data platforms and pipelines", "Business intelligence", "Advanced analytics", "Responsible AI enablement"]],
   ["Security & resilience", "Reduce technology risk with security built into architecture, delivery, and operations.", ShieldCheck, "security-resilience", ["Security assessments", "Cloud and application security", "Governance and compliance", "Resilience planning"]],
-  ["Talent & delivery teams", "Add experienced specialists or form outcome-oriented teams around your most important work.", Users, "talent-delivery", ["Specialist augmentation", "Managed delivery teams", "Technical recruitment", "Delivery leadership"]],
-  ["Training & enablement", "Help teams adopt modern technologies and practices through applied, role-relevant learning.", GraduationCap, "training-enablement", ["Technical academies", "Custom workshops", "Leadership enablement", "On-the-job coaching"]],
+  ["Talent & delivery teams", "Add experienced specialists or form outcome-oriented teams around your most important work.", Users, "talent-delivery", ["Specialist augmentation", "Managed delivery teams", "Technical recruitment", "Delivery leadership"], "/project-support"],
+  ["Training & enablement", "Help teams adopt modern technologies and practices through applied, role-relevant learning.", GraduationCap, "training-enablement", ["Corporate trainings", "Custom workshops", "Leadership enablement", "On-the-job coaching"], "/corporate-trainings"],
 ] as const;
 
 export default function ServicesPage() {
@@ -34,7 +34,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/70 via-transparent to-[#081B33]/20" />
         <div className="site-container relative grid min-h-[500px] gap-10 py-24 lg:grid-cols-[1.25fr_.75fr] lg:items-end md:py-32">
           <div>
-            <p className="eyebrow !text-cyan-300">Capabilities</p>
+            <p className="eyebrow !text-cyan-300">Consulting services</p>
             <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">
               Expertise that connects strategy to working technology.
             </h1>
@@ -46,14 +46,14 @@ export default function ServicesPage() {
       <section className="py-24 md:py-32">
         <div className="site-container">
           <div className="border-t border-slate-300">
-            {services.map(([title, body, Icon, id, features], index) => (
+            {services.map(([title, body, Icon, id, features, detailHref], index) => (
               <article id={id} key={title} className="scroll-mt-24 grid gap-8 border-b border-slate-200 py-10 lg:grid-cols-[80px_1fr_1fr] lg:py-14">
                 <div className="text-sm font-extrabold text-slate-400">0{index + 1}</div>
                 <div>
                   <Icon className="text-blue-600" size={30} strokeWidth={1.7} aria-hidden />
                   <h2 className="display-font mt-7 text-3xl font-bold tracking-[-0.035em] text-[#081B33]">{title}</h2>
                   <p className="mt-4 max-w-xl leading-7 text-slate-600">{body}</p>
-                  <Link href={`/contactus?service=${id}`} className="mt-7 inline-flex items-center gap-2 font-bold text-blue-600">Discuss this capability <ArrowRight size={17} aria-hidden /></Link>
+                  <Link href={detailHref ?? `/contactus?service=${id}`} className="mt-7 inline-flex items-center gap-2 font-bold text-blue-600">Explore this service <ArrowRight size={17} aria-hidden /></Link>
                 </div>
                 <ul className="grid content-start gap-3 sm:grid-cols-2 lg:pt-14">
                   {features.map((feature) => <li key={feature} className="border-l-2 border-cyan-500 py-1 pl-4 text-sm font-semibold text-slate-700">{feature}</li>)}
@@ -66,7 +66,7 @@ export default function ServicesPage() {
 
       <section className="bg-[#F8FAFC] py-20">
         <div className="site-container grid gap-10 lg:grid-cols-3">
-          <div><p className="eyebrow">Engagement models</p><h2 className="section-title mt-5">The right shape for the work.</h2></div>
+          <div><p className="eyebrow">How clients engage us</p><h2 className="section-title mt-5">The right shape for the work.</h2></div>
           {[
             ["Advisory", "Senior guidance for strategy, architecture, operating models, and critical decisions."],
             ["Delivery", "Accountable teams that take defined outcomes from discovery through implementation."],

@@ -115,7 +115,7 @@ export default function Home() {
         <div className="site-container">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <div>
-              <p className="eyebrow">What we do</p>
+              <p className="eyebrow">Where RV IT helps</p>
               <h2 className="section-title balanced mt-5">One partner for the work between ambition and execution.</h2>
             </div>
             <div className="lg:pt-11">
@@ -152,13 +152,13 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/70 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 max-w-sm bg-[#081B33] p-7 text-white">
-              <p className="text-sm font-bold uppercase tracking-[0.12em] text-cyan-300">Our difference</p>
+              <p className="text-sm font-bold text-cyan-300">Why teams stay with us</p>
               <p className="display-font mt-3 text-2xl font-semibold leading-tight">Senior thinking stays close to delivery.</p>
             </div>
           </div>
 
           <div>
-            <p className="eyebrow">How we work</p>
+            <p className="eyebrow">The way we deliver</p>
             <h2 className="section-title balanced mt-5">Clear decisions. Capable teams. Measurable progress.</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               We keep engagements transparent and grounded in your operating reality, with experienced practitioners involved from discovery through delivery.
@@ -188,7 +188,7 @@ export default function Home() {
       <section className="py-24 md:py-32">
         <div className="site-container">
           <div className="max-w-3xl">
-            <p className="eyebrow">Industry context</p>
+            <p className="eyebrow">Built around your operating reality</p>
             <h2 className="section-title balanced mt-5">Technology expertise shaped around the work your organization does.</h2>
           </div>
           <div className="mt-14 grid border-t border-slate-300 md:grid-cols-2 lg:grid-cols-3">
@@ -208,7 +208,7 @@ export default function Home() {
       <section className="bg-blue-600 py-20 text-white md:py-24">
         <div className="site-container flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div className="max-w-3xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-blue-100">Start with a useful conversation</p>
+            <p className="text-sm font-extrabold text-blue-100">Start with a useful conversation</p>
             <h2 className="display-font balanced mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] md:text-5xl">
               What technology challenge is slowing your organization down?
             </h2>

@@ -8,6 +8,8 @@ const serviceLinks = [
   ["Data & intelligence", "/services#data-intelligence"],
   ["Security & resilience", "/services#security-resilience"],
   ["Talent & delivery", "/services#talent-delivery"],
+  ["Corporate trainings", "/corporate-trainings"],
+  ["Project support", "/project-support"],
 ];
 
 export default function Footer() {
@@ -26,7 +28,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-extrabold uppercase tracking-[0.12em] text-slate-400">Capabilities</h3>
+            <h3 className="text-sm font-extrabold uppercase tracking-[0.12em] text-slate-400">Services</h3>
             <ul className="mt-5 space-y-3">
               {serviceLinks.map(([label, path]) => (
                 <li key={path}>
@@ -43,7 +45,6 @@ export default function Footer() {
             <ul className="mt-5 space-y-3 text-sm text-slate-200">
               <li><Link href="/about" className="hover:text-white">About us</Link></li>
               <li><Link href="/industries" className="hover:text-white">Industries</Link></li>
-              <li><Link href="/locations" className="hover:text-white">Global reach</Link></li>
               <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
               <li>
                 <a href="mailto:contact@rvit.co.in" className="inline-flex items-center gap-2 hover:text-white">

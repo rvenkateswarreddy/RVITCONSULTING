@@ -32,7 +32,7 @@ export default function IndustriesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/70 via-transparent to-[#081B33]/20" />
         <div className="site-container relative flex min-h-[500px] items-center py-24 md:py-32">
           <div className="max-w-5xl">
-            <p className="eyebrow !text-cyan-300">Industry experience</p>
+            <p className="eyebrow !text-cyan-300">Sector-aware consulting</p>
             <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">Context changes what good technology looks like.</h1>
             <p className="mt-8 max-w-3xl text-xl leading-9 text-slate-200">We combine technology depth with respect for the operating, regulatory, and customer realities of each sector.</p>
           </div>

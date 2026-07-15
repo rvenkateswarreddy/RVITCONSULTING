@@ -8,10 +8,11 @@ import BrandLogo from "./BrandLogo";
 
 const navItems = [
   { name: "Services", path: "/services" },
+  { name: "Project Support", path: "/project-support" },
+  { name: "Trainings", path: "/corporate-trainings" },
   { name: "Industries", path: "/industries" },
-  { name: "About", path: "/about" },
-  { name: "Locations", path: "/locations" },
   { name: "Careers", path: "/careers" },
+  { name: "About", path: "/about" },
 ];
 
 export default function Navbar() {
