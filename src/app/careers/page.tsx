@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight, CheckCircle, FileText, Mail, MapPin, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, CheckCircle, FileText, MapPin, ShieldCheck, Users } from "lucide-react";
 import { functionsEndpoint } from "@/lib/functions-api";
 
 const initialForm = {
@@ -12,47 +12,153 @@ const initialForm = {
   website: "",
 };
 
-const talentAreas = [
-  "Data Science",
-  "Generative AI (Gen AI)",
-  "Java Full Stack Development",
-  "Python",
-  "Power BI",
-  "Workday",
-  "Data Analyst",
-  "SAS (Clinical & Banking Domain)",
-  "Data Engineer",
-  "Azure DevOps",
-  "ServiceNow",
-  "AWS Cloud",
-  "Web Development",
-  "iOS Development",
-  "Android Development",
-] as const;
-
-const focusRoles = [
+const hiringDomains = [
   {
-    title: "Engineering & Product",
-    areas: ["Java Full Stack", "Python", "Web", "iOS", "Android"],
-    text: "Build reliable client-facing and internal platforms across modern web and mobile stacks.",
+    title: "Software Engineering",
+    description: "Full stack, frontend, backend, API, product engineering, and enterprise application roles.",
+    roles: [
+      "Java Full Stack Development",
+      "Java Developer",
+      "Spring Boot Developer",
+      "Python Developer",
+      "Node.js Developer",
+      ".NET Developer",
+      "Frontend Developer",
+      "React Developer",
+      "Angular Developer",
+      "Backend Developer",
+      "Full Stack Developer",
+      "Web Development",
+      "API Developer",
+      "Microservices Developer",
+    ],
+  },
+  {
+    title: "Mobile & Experience",
+    description: "Native mobile, cross-platform, UI engineering, and digital experience roles.",
+    roles: [
+      "iOS Development",
+      "Android Development",
+      "React Native Developer",
+      "Flutter Developer",
+      "Mobile App Developer",
+      "UI Developer",
+      "UX Designer",
+      "Accessibility Engineer",
+    ],
   },
   {
     title: "Data, AI & Analytics",
-    areas: ["Data Science", "Gen AI", "Power BI", "Data Engineering"],
-    text: "Turn enterprise data into governed pipelines, dashboards, models, and practical AI workflows.",
+    description: "Data, reporting, engineering, AI, BI, and domain analytics roles.",
+    roles: [
+      "Data Science",
+      "Generative AI (Gen AI)",
+      "Machine Learning Engineer",
+      "AI Engineer",
+      "Data Analyst",
+      "Business Analyst",
+      "Data Engineer",
+      "ETL Developer",
+      "SQL Developer",
+      "Power BI",
+      "Tableau Developer",
+      "SAS (Clinical & Banking Domain)",
+      "Clinical Data Analyst",
+      "Banking Data Analyst",
+    ],
   },
   {
-    title: "Cloud & Enterprise Platforms",
-    areas: ["AWS", "Azure DevOps", "ServiceNow", "Workday", "SAS"],
-    text: "Support cloud modernization, workflow automation, and regulated domain delivery.",
+    title: "Cloud, DevOps & Infrastructure",
+    description: "Cloud platforms, automation, release engineering, infrastructure, and reliability roles.",
+    roles: [
+      "AWS Cloud",
+      "Azure Cloud",
+      "Google Cloud Platform (GCP)",
+      "Cloud Engineer",
+      "Azure DevOps",
+      "DevOps Engineer",
+      "SRE Engineer",
+      "Kubernetes Engineer",
+      "Docker Engineer",
+      "Terraform Engineer",
+      "Linux Administrator",
+      "Windows Administrator",
+      "Network Engineer",
+    ],
+  },
+  {
+    title: "Enterprise Platforms",
+    description: "Workflow, ERP, CRM, HR systems, service management, and enterprise platform roles.",
+    roles: [
+      "ServiceNow",
+      "Workday",
+      "Salesforce",
+      "SAP",
+      "Oracle",
+      "SharePoint",
+      "MuleSoft",
+      "RPA Developer",
+      "UiPath Developer",
+      "Enterprise Application Support",
+    ],
+  },
+  {
+    title: "Quality, Security & Support",
+    description: "Testing, security, production support, technical support, and application operations roles.",
+    roles: [
+      "QA Engineer",
+      "Automation Test Engineer",
+      "Manual Test Engineer",
+      "SDET",
+      "Performance Tester",
+      "Cybersecurity Analyst",
+      "Application Security Engineer",
+      "Technical Support Engineer",
+      "Production Support Engineer",
+      "Application Support Analyst",
+      "Helpdesk Support",
+    ],
+  },
+  {
+    title: "Delivery, Project & Product",
+    description: "Project coordination, agile delivery, product ownership, documentation, and client delivery roles.",
+    roles: [
+      "Project Manager",
+      "Project Coordinator",
+      "Scrum Master",
+      "Product Owner",
+      "Product Manager",
+      "Program Manager",
+      "Delivery Manager",
+      "Technical Writer",
+      "Process Analyst",
+      "PMO Analyst",
+    ],
+  },
+  {
+    title: "HR, Recruitment & Operations",
+    description: "Hiring, HR operations, people coordination, onboarding, and consultant engagement roles.",
+    roles: [
+      "HR Executive",
+      "IT Recruiter",
+      "Technical Recruiter",
+      "Talent Acquisition Specialist",
+      "HR Operations",
+      "HR Coordinator",
+      "Bench Sales Recruiter",
+      "Onboarding Coordinator",
+      "Operations Executive",
+    ],
   },
 ] as const;
 
+const talentAreas = Array.from(new Set(hiringDomains.flatMap((domain) => domain.roles)));
+
 const hiringSteps = [
-  ["01", "Share your profile", "Send your resume with the closest primary area."],
-  ["02", "Profile review", "We review fit against active and upcoming client needs."],
-  ["03", "Practical conversation", "We discuss real project experience, ownership, and communication."],
-  ["04", "Client alignment", "Selected profiles move into role fitment, documentation, and onboarding."],
+  ["01", "Choose your closest role", "Use any Apply button to preselect the role area in the form."],
+  ["02", "Share your resume", "Submit your profile with your primary technology or functional area."],
+  ["03", "Profile review", "We review fit against active hiring, project support, and client requirements."],
+  ["04", "Role alignment", "Shortlisted profiles move into discussion, fitment, and onboarding steps."],
 ] as const;
 
 export default function CareersPage() {
@@ -97,6 +203,11 @@ export default function CareersPage() {
     }
   }
 
+  function applyFor(area: string) {
+    setForm((current) => ({ ...current, job: area }));
+    document.getElementById("apply")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   const fieldClass =
     "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-[#081B33] shadow-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-200";
 
@@ -108,26 +219,26 @@ export default function CareersPage() {
           alt=""
           fill
           priority
-          className="object-cover object-center opacity-35"
+          className="object-cover object-center opacity-40"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.96)_48%,rgba(8,27,51,.62)_100%)]" />
-        <div className="site-container relative grid min-h-[560px] items-end py-24 md:py-32">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.96)_48%,rgba(8,27,51,.58)_100%)]" />
+        <div className="site-container relative grid min-h-[590px] items-end py-24 md:py-32">
           <div className="max-w-4xl">
-            <p className="eyebrow !text-cyan-300">Join our delivery network</p>
+            <p className="eyebrow !text-cyan-300">We are hiring</p>
             <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.03] tracking-[-0.06em] md:text-7xl">
-              Join a team built for serious technology delivery.
+              Opportunities across the technology market.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-              We work with experienced engineers, analysts, cloud specialists, and platform
-              consultants who can help clients move with clarity and confidence.
+              We hire technology, project delivery, support, HR, and recruitment professionals
+              for active roles, contract needs, and upcoming client assignments.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a href="#apply" className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700">
-                Submit profile <ArrowRight size={18} aria-hidden />
+              <a href="#open-roles" className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700">
+                View hiring areas <ArrowRight size={18} aria-hidden />
               </a>
-              <a href="mailto:contact@rvit.co.in" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white/15">
-                <Mail size={17} aria-hidden /> contact@rvit.co.in
+              <a href="#apply" className="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white/15">
+                Apply now
               </a>
             </div>
           </div>
@@ -137,9 +248,9 @@ export default function CareersPage() {
       <section className="border-b border-slate-200 bg-white">
         <div className="site-container grid md:grid-cols-3">
           {[
-            ["Technology consulting", "Engineering, cloud, data, AI, and enterprise platforms."],
-            ["Client-aligned roles", "Opportunities depend on approved project requirements."],
-            ["Global delivery", "Support across India, USA, Europe, Middle East, and APAC contexts."],
+            [`${talentAreas.length}+ role areas`, "A broad hiring catalogue across modern technology and business functions."],
+            ["Flexible engagement", "Full-time, contract, part-time, project support, and client-aligned needs."],
+            ["Fast apply path", "Select a role area, upload your resume, and our team reviews your profile."],
           ].map(([title, text]) => (
             <div key={title} className="border-l border-slate-200 px-6 py-8 last:border-r">
               <h2 className="font-extrabold text-[#081B33]">{title}</h2>
@@ -149,51 +260,67 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="bg-[#F8FAFC] py-20 md:py-28">
+      <section id="open-roles" className="bg-[#F8FAFC] py-20 md:py-28">
         <div className="site-container">
           <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
             <div>
-              <p className="eyebrow">Hiring focus</p>
-              <h2 className="section-title mt-5">Career areas we are actively tracking.</h2>
+              <p className="eyebrow">Hiring universe</p>
+              <h2 className="section-title mt-5">Choose your domain and apply directly.</h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-                We keep hiring communication simple. If your experience fits one of these
-                areas, share your profile and we will review it against current and upcoming
-                consulting needs.
+                Instead of showing only a few jobs, we organize hiring by technology and
+                functional domains. If your skill is close to one of these areas, apply.
               </p>
             </div>
 
             <div className="relative min-h-[430px] overflow-hidden bg-[#081B33] shadow-[0_24px_70px_rgba(8,27,51,0.14)]">
               <Image
                 src="/assets/WhyChooseUs/team-2.png"
-                alt="Technology consultants discussing a delivery plan"
+                alt="Technology consultants discussing delivery priorities"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/80 via-[#081B33]/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/82 via-[#081B33]/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
                 <p className="display-font max-w-md text-2xl font-semibold leading-tight">
-                  We hire for judgment, communication, and delivery ownership.
+                  From engineering and cloud to HR and recruitment, we are building a serious talent network.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-14 grid overflow-hidden border border-slate-200 bg-white shadow-[0_18px_55px_rgba(8,27,51,0.06)]">
-            {focusRoles.map((role, index) => (
-              <article key={role.title} className="grid gap-6 border-b border-slate-200 p-7 last:border-b-0 md:grid-cols-[96px_1fr_.85fr] md:p-9">
-                <div className="display-font text-3xl font-semibold tracking-[-0.04em] text-blue-600">
-                  {String(index + 1).padStart(2, "0")}
+          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+            {hiringDomains.map((domain, index) => (
+              <article key={domain.title} className="overflow-hidden border border-slate-200 bg-white shadow-[0_18px_55px_rgba(8,27,51,0.06)]">
+                <div className="border-b border-slate-200 bg-[#081B33] p-6 text-white">
+                  <div className="flex items-start justify-between gap-6">
+                    <div>
+                      <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-cyan-200">
+                        {String(index + 1).padStart(2, "0")} / Hiring domain
+                      </p>
+                      <h3 className="display-font mt-3 text-2xl font-semibold tracking-[-0.035em]">{domain.title}</h3>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => applyFor(domain.roles[0])}
+                      className="shrink-0 rounded-md bg-white px-4 py-2 text-sm font-extrabold text-[#081B33] hover:bg-cyan-50"
+                    >
+                      Apply
+                    </button>
+                  </div>
+                  <p className="mt-4 max-w-xl text-sm leading-6 text-slate-300">{domain.description}</p>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-extrabold tracking-[-0.03em] text-[#081B33]">{role.title}</h3>
-                  <p className="mt-4 max-w-xl leading-7 text-slate-600">{role.text}</p>
-                </div>
-                <div className="flex flex-wrap content-start gap-2 md:justify-end">
-                  {role.areas.map((area) => (
-                    <span key={area} className="rounded-full bg-blue-50 px-3 py-1 text-xs font-extrabold text-blue-700">
-                      {area}
-                    </span>
+                <div className="flex flex-wrap gap-2 p-6">
+                  {domain.roles.map((role) => (
+                    <button
+                      key={role}
+                      type="button"
+                      onClick={() => applyFor(role)}
+                      className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-extrabold text-blue-700 transition hover:bg-blue-600 hover:text-white"
+                      aria-label={`Apply for ${role}`}
+                    >
+                      {role}
+                    </button>
                   ))}
                 </div>
               </article>
@@ -208,8 +335,8 @@ export default function CareersPage() {
             <p className="eyebrow">Candidate journey</p>
             <h2 className="section-title mt-5">A practical process, without unnecessary noise.</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
-              Our process is built around real delivery experience, communication, and
-              client fit. No fake urgency, no mystery steps.
+              Apply for the closest role area. Our team reviews your resume against active
+              hiring needs, project support requests, and upcoming client requirements.
             </p>
           </div>
           <div className="grid gap-4">
@@ -246,10 +373,10 @@ export default function CareersPage() {
         <div className="site-container grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
           <div>
             <p className="eyebrow">Profile submission</p>
-            <h2 className="section-title mt-5">Share your profile with RV IT.</h2>
+            <h2 className="section-title mt-5">Apply to RV IT.</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
-              Submit your resume once. We will review it for active and future consulting,
-              engineering, cloud, data, and platform opportunities.
+              Submit your resume once. We will review it for active and future technology,
+              HR, recruitment, support, cloud, data, and enterprise platform opportunities.
             </p>
             <div className="mt-10 border-t border-slate-200 pt-7">
               <div className="flex gap-4">
