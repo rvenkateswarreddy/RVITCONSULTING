@@ -27,6 +27,43 @@ const serviceParamMap: Record<string, string> = {
   "training-enablement": "Corporate training",
 };
 
+const serviceOptions = [
+  "IT consulting",
+  "Digital engineering",
+  "Software engineering",
+  "Application modernization",
+  "Web development",
+  "Mobile app development",
+  "Cloud modernization",
+  "AWS Cloud",
+  "Azure DevOps",
+  "DevOps support",
+  "Data and analytics",
+  "Data engineering",
+  "Data Science",
+  "Generative AI",
+  "Power BI",
+  "Cybersecurity",
+  "Security and resilience",
+  "Project support",
+  "Technical support",
+  "Contract support",
+  "Part-time 4-hour support",
+  "Full-time 8-hour support",
+  "Technology recruitment",
+  "Staffing support",
+  "HR and talent support",
+  "Marketing support",
+  "Career profile marketing",
+  "Business marketing support",
+  "Corporate training",
+  "Team workshops",
+  "ServiceNow",
+  "Workday",
+  "SAS support",
+  "Other",
+] as const;
+
 export default function ContactForm() {
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState(initialForm);
@@ -129,16 +166,9 @@ export default function ContactForm() {
         <label htmlFor="service" className="mb-2 block text-sm font-bold text-slate-700">How can we help? *</label>
         <select id="service" name="service" required value={formData.service} onChange={handleChange} className={fieldClass}>
           <option value="">Select a service</option>
-          <option value="IT consulting">IT consulting</option>
-          <option value="Cloud modernization">Cloud modernization</option>
-          <option value="Data and analytics">Data and analytics</option>
-          <option value="Cybersecurity">Cybersecurity</option>
-          <option value="Software engineering">Software engineering</option>
-          <option value="Project support">Project support</option>
-          <option value="Technology recruitment">Technology recruitment</option>
-          <option value="Marketing support">Marketing support</option>
-          <option value="Corporate training">Corporate training</option>
-          <option value="Other">Other</option>
+          {serviceOptions.map((service) => (
+            <option key={service} value={service}>{service}</option>
+          ))}
         </select>
       </div>
 

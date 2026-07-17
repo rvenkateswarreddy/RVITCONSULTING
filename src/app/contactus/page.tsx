@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Suspense } from "react";
 import { Clock, Mail, MessageSquare } from "lucide-react";
-import CloudWorkflowStatus from "../components/CloudWorkflowStatus";
 import ContactForm from "../contact/ContactForm";
 import { createPageMetadata } from "../seo";
 
@@ -44,9 +43,6 @@ export default function ContactPage() {
               <div className="flex gap-4"><Mail className="mt-1 text-blue-600" size={20} aria-hidden /><div><p className="font-extrabold text-[#081B33]">Email</p><a href="mailto:contact@rvit.co.in" className="mt-1 block text-slate-600 hover:text-blue-600">contact@rvit.co.in</a></div></div>
               <div className="flex gap-4"><Clock className="mt-1 text-blue-600" size={20} aria-hidden /><div><p className="font-extrabold text-[#081B33]">Response</p><p className="mt-1 text-slate-600">Typically within one business day</p></div></div>
               <div className="flex gap-4"><MessageSquare className="mt-1 text-blue-600" size={20} aria-hidden /><div><p className="font-extrabold text-[#081B33]">What happens next</p><p className="mt-1 text-slate-600">A focused discovery conversation with a relevant consultant</p></div></div>
-            </div>
-            <div className="mt-8">
-              <CloudWorkflowStatus />
             </div>
           </aside>
 
