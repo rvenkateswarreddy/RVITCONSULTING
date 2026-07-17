@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowRight, CheckCircle, FileText, MapPin, ShieldCheck, Users } from "lucide-react";
+import CloudWorkflowStatus from "../components/CloudWorkflowStatus";
 import { functionsEndpoint } from "@/lib/functions-api";
 
 const initialForm = {
@@ -388,6 +389,9 @@ export default function CareersPage() {
                   </p>
                 </div>
               </div>
+            </div>
+            <div className="mt-8">
+              <CloudWorkflowStatus />
             </div>
           </div>
 

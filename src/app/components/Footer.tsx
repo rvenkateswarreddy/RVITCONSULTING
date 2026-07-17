@@ -8,6 +8,7 @@ const serviceLinks = [
   ["Data & intelligence", "/services#data-intelligence"],
   ["Security & resilience", "/services#security-resilience"],
   ["Talent & delivery", "/services#talent-delivery"],
+  ["Marketing support", "/marketing"],
   ["Corporate trainings", "/corporate-trainings"],
   ["Project support", "/project-support"],
 ];

@@ -5,6 +5,6 @@ const functionsBaseUrl = (
   process.env.NEXT_PUBLIC_FUNCTIONS_BASE_URL || defaultFunctionsBaseUrl
 ).replace(/\/$/, "");
 
-export function functionsEndpoint(name: "submitContact" | "submitCareer"): string {
+export function functionsEndpoint(name: "submitContact" | "submitCareer" | "health"): string {
   return `${functionsBaseUrl}/${name}`;
 }

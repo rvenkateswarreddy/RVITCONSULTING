@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CheckCircle, Send } from "lucide-react";
 import { functionsEndpoint } from "@/lib/functions-api";
 
@@ -14,11 +15,37 @@ const initialForm = {
   website: "",
 };
 
+const serviceParamMap: Record<string, string> = {
+  "cloud-modernization": "Cloud modernization",
+  "corporate-trainings": "Corporate training",
+  "data-intelligence": "Data and analytics",
+  "digital-engineering": "Software engineering",
+  "marketing-support": "Marketing support",
+  "project-support": "Project support",
+  "security-resilience": "Cybersecurity",
+  "talent-delivery": "Technology recruitment",
+  "training-enablement": "Corporate training",
+};
+
 export default function ContactForm() {
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [reference, setReference] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const serviceParam = searchParams.get("service");
+    if (!serviceParam) return;
+
+    const mappedService = serviceParamMap[serviceParam] ?? "";
+    if (!mappedService) return;
+
+    setFormData((current) => ({
+      ...current,
+      service: current.service || mappedService,
+    }));
+  }, [searchParams]);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -109,6 +136,7 @@ export default function ContactForm() {
           <option value="Software engineering">Software engineering</option>
           <option value="Project support">Project support</option>
           <option value="Technology recruitment">Technology recruitment</option>
+          <option value="Marketing support">Marketing support</option>
           <option value="Corporate training">Corporate training</option>
           <option value="Other">Other</option>
         </select>
