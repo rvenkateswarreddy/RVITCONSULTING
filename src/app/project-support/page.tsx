@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, FileText, Headphones } from "lucide-react";
 import { createPageMetadata } from "../seo";
+import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Project Support",
@@ -46,32 +46,27 @@ const projectAreas = [
 export default function ProjectSupportPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#081B33] text-white">
-        <Image
-          src="/assets/brand/consulting-team-hero.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center opacity-48"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.96)_48%,rgba(8,27,51,.58)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/75 via-transparent to-[#081B33]/20" />
-        <div className="site-container relative flex min-h-[540px] items-center py-24 md:py-32">
-          <div className="max-w-5xl">
-            <p className="eyebrow !text-cyan-300">Project support</p>
-            <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">
-              Technical support when delivery needs momentum.
+      <section className="cinematic-hero support-hero">
+        <CinematicMedia video="/assets/media/project-support-hero.mp4" poster="/assets/media/project-operations-real.jpg" priority position="center" />
+        <div className="cinematic-shade" />
+        <div className="site-container cinematic-content">
+          <div className="ml-auto max-w-3xl" data-reveal="right">
+            <h1 className="hero-display">
+              Keep delivery moving. <em>Stay in control.</em>
             </h1>
-            <p className="mt-8 max-w-3xl text-xl leading-9 text-slate-200">
+            <p className="hero-copy">
               Add experienced technical support to your project through contract,
               part-time, or full-time engagement models.
             </p>
+            <div className="hero-actions">
+              <Link href="/contactus?service=project-support" className="button-primary">Discuss coverage <ArrowRight size={18} aria-hidden /></Link>
+              <a href="#support-models" className="button-ghost">Compare models</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
+      <section id="support-models" className="editorial-section scroll-mt-24">
         <div className="site-container">
           <div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-end">
             <div>
@@ -86,7 +81,7 @@ export default function ProjectSupportPage() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {supportModels.map((model) => (
-              <article key={model.title} className="border border-slate-200 bg-white p-7 shadow-[0_18px_55px_rgba(8,27,51,0.06)]">
+              <article key={model.title} className="rounded-[24px] border border-slate-200 bg-white p-7 shadow-[0_18px_55px_rgba(8,27,51,0.06)] transition hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(8,27,51,0.12)]" data-reveal>
                 <Headphones className="text-blue-600" size={26} aria-hidden />
                 <h3 className="mt-6 text-2xl font-extrabold tracking-[-0.03em] text-[#081B33]">{model.title}</h3>
                 <p className="mt-4 leading-7 text-slate-600">{model.body}</p>
@@ -106,22 +101,15 @@ export default function ProjectSupportPage() {
 
       <section className="bg-[#F8FAFC] py-24 md:py-28">
         <div className="site-container grid items-center gap-14 lg:grid-cols-[.95fr_1.05fr]">
-          <div className="relative min-h-[460px] overflow-hidden bg-[#081B33]">
-            <Image
-              src="/assets/WhyChooseUs/team-1.png"
-              alt="Technical consultants supporting project delivery"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/75 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
-              <p className="display-font text-2xl font-semibold leading-tight">
-                Support can be shaped around your project rhythm, not a rigid template.
-              </p>
+          <div className="support-console" data-reveal="left">
+            <div className="support-console-top"><span /><span /><span /><b>DELIVERY PULSE</b></div>
+            <div className="support-radar"><i /><i /><i /><span /></div>
+            <div className="support-console-copy">
+              <small>Coverage designed around your rhythm</small>
+              <strong>Right skill. Right window. Clear ownership.</strong>
             </div>
           </div>
-          <div>
+          <div data-reveal="right">
             <p className="eyebrow">Where we help</p>
             <h2 className="section-title mt-5">Technical coverage for active delivery teams.</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
@@ -140,15 +128,15 @@ export default function ProjectSupportPage() {
         </div>
       </section>
 
-      <section className="bg-blue-600 py-20 text-white">
-        <div className="site-container flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+      <section className="dark-section py-20 text-white">
+        <div className="site-container relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
           <div>
             <p className="text-sm font-extrabold text-blue-100">Contract, 4-hour, and 8-hour programs</p>
             <h2 className="display-font mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.04em]">
               Need reliable technical support for an active project?
             </h2>
           </div>
-          <Link href="/contactus?service=project-support" className="inline-flex shrink-0 items-center gap-2 rounded-md bg-white px-6 py-4 font-extrabold text-blue-700 hover:bg-blue-50">
+          <Link href="/contactus?service=project-support" className="button-light shrink-0">
             Discuss support options <ArrowRight size={18} aria-hidden />
           </Link>
         </div>

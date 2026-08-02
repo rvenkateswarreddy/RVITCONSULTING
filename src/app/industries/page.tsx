@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { createPageMetadata } from "../seo";
+import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Industries",
@@ -19,31 +20,30 @@ const industries = [
 export default function IndustriesPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#081B33] text-white">
-        <Image
-          src="/assets/Industries/Finance.webp"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center opacity-50"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.94)_48%,rgba(8,27,51,.45)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/70 via-transparent to-[#081B33]/20" />
-        <div className="site-container relative flex min-h-[500px] items-center py-24 md:py-32">
-          <div className="max-w-5xl">
-            <p className="eyebrow !text-cyan-300">Sector-aware consulting</p>
-            <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">Context changes what good technology looks like.</h1>
-            <p className="mt-8 max-w-3xl text-xl leading-9 text-slate-200">We combine technology depth with respect for the operating, regulatory, and customer realities of each sector.</p>
+      <section className="industry-photo-hero text-white">
+        <CinematicMedia video="/assets/media/industries-hero.mp4" poster="/assets/Industries/Finance.webp" priority position="center" className="industry-hero-video" />
+        <div className="industry-video-shade" />
+        <div className="site-container industry-hero-grid">
+          <div className="max-w-3xl" data-reveal>
+            <h1 className="hero-display">Context changes <em>everything.</em></h1>
+            <p className="hero-copy">We combine technology depth with respect for the operating, regulatory, and customer realities of each sector.</p>
+          </div>
+          <div className="industry-mosaic" aria-label="Industries served" data-reveal="right">
+            {industries.map(([title, , image], index) => (
+              <figure key={title} className={`industry-mosaic-item item-${index + 1}`}>
+                <Image src={image} alt={`${title} industry`} fill className="object-cover" sizes="(max-width: 900px) 50vw, 25vw" />
+                <figcaption>{title}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
+      <section className="editorial-section">
         <div className="site-container space-y-20">
           {industries.map(([title, body, image, label], index) => (
-            <article key={title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-              <div className={`relative min-h-[400px] overflow-hidden ${index % 2 ? "lg:order-2" : ""}`}>
+            <article key={title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16" data-reveal>
+              <div className={`media-panel min-h-[400px] ${index % 2 ? "lg:order-2" : ""}`}>
                 <Image src={image} alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/60 to-transparent" />
                 <p className="absolute bottom-6 left-6 text-xs font-extrabold uppercase tracking-[0.14em] text-white">{label}</p>
@@ -59,8 +59,8 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="bg-[#F8FAFC] py-20">
-        <div className="site-container grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+      <section className="soft-section py-20">
+        <div className="site-container grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center" data-reveal>
           <h2 className="section-title">Your sector is not a template.</h2>
           <p className="text-lg leading-8 text-slate-600">Our first job is to understand the economics, constraints, users, and systems already in play. That context shapes the roadmap, team, architecture, and pace of delivery.</p>
         </div>

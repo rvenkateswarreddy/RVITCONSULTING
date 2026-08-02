@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BarChart3,
@@ -12,6 +12,7 @@ import {
   Users,
 } from "lucide-react";
 import { createPageMetadata } from "../seo";
+import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Enterprise Technology Consulting Services",
@@ -104,32 +105,27 @@ const technologyGroups = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#081B33] text-white">
-        <Image
-          src="/assets/WhyChooseUs/team-2.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center opacity-50"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.95)_48%,rgba(8,27,51,.58)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/70 via-transparent to-[#081B33]/20" />
-        <div className="site-container relative grid min-h-[500px] gap-10 py-24 lg:grid-cols-[1.25fr_.75fr] lg:items-end md:py-32">
-          <div>
-            <p className="eyebrow !text-cyan-300">Consulting services</p>
-            <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">
-              Complete technology services for modern enterprise teams.
+      <section className="cinematic-hero">
+        <CinematicMedia video="/assets/media/services-engineering.mp4" poster="/assets/media/services-engineering-poster.png" position="center" />
+        <div className="cinematic-shade" />
+        <div className="site-container cinematic-content">
+          <div className="max-w-5xl" data-reveal>
+            <h1 className="hero-display">
+              From complex systems to <em>clear outcomes.</em>
             </h1>
-          </div>
-          <p className="text-lg leading-8 text-slate-300">
+            <p className="hero-copy">
             From software engineering and cloud to data, AI, trainings, staffing, project support,
             and marketing support, RV IT Consulting helps clients move from requirement to real execution.
-          </p>
+            </p>
+            <div className="hero-actions">
+              <Link href="/contactus" className="button-primary">Shape an engagement <ArrowRight size={18} aria-hidden /></Link>
+              <a href="#digital-engineering" className="button-ghost">Explore capabilities</a>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="bg-[#F8FAFC] py-16">
+      <section className="soft-section py-16">
         <div className="site-container grid gap-5 md:grid-cols-4">
           {[
             ["End-to-end", "Consulting, implementation, support, hiring, training, and market visibility."],
@@ -137,7 +133,7 @@ export default function ServicesPage() {
             ["Modern stack", "Cloud, DevOps, data, AI, mobile, web, and enterprise platform expertise."],
             ["Global mindset", "Support for clients, candidates, and businesses across multiple markets."],
           ].map(([title, body]) => (
-            <div key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-reveal>
               <h2 className="display-font text-xl font-extrabold tracking-[-0.025em] text-[#081B33]">{title}</h2>
               <p className="mt-3 text-sm leading-6 text-slate-600">{body}</p>
             </div>
@@ -145,33 +141,38 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
-        <div className="site-container">
-          <div className="border-t border-slate-300">
+      <section className="editorial-section">
+        <div className="site-container service-scroll-shell">
+          <aside className="service-sticky-media" data-reveal="left">
+            <Image src="/assets/media/services-developers.jpg" alt="Software engineers collaborating around a workstation" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 42vw" />
+            <div className="service-sticky-copy">
+              <p>One connected delivery team</p>
+              <strong>From first decision to a reliable operating service.</strong>
+            </div>
+          </aside>
+          <div className="service-catalogue">
             {services.map(({ title, body, icon: Icon, id, features, href }, index) => (
-              <article id={id} key={title} className="scroll-mt-24 grid gap-8 border-b border-slate-200 py-10 lg:grid-cols-[80px_1fr_1.15fr] lg:py-14">
-                <div className="text-sm font-extrabold text-slate-400">0{index + 1}</div>
-                <div>
+              <article id={id} key={title} className="service-entry" data-reveal="right">
+                <div className="service-entry-heading">
+                  <span>0{index + 1}</span>
                   <Icon className="text-blue-600" size={30} strokeWidth={1.7} aria-hidden />
-                  <h2 className="display-font mt-7 text-3xl font-bold tracking-[-0.035em] text-[#081B33]">{title}</h2>
-                  <p className="mt-4 max-w-xl leading-7 text-slate-600">{body}</p>
-                  <Link href={href} className="mt-7 inline-flex items-center gap-2 font-bold text-blue-600">Explore this service <ArrowRight size={17} aria-hidden /></Link>
+                  <h2>{title}</h2>
                 </div>
-                <ul className="grid content-start gap-3 sm:grid-cols-2 lg:pt-14">
+                <p className="service-entry-body">{body}</p>
+                <ul className="service-feature-list">
                   {features.map((feature) => (
-                    <li key={feature} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
-                      {feature}
-                    </li>
+                    <li key={feature}>{feature}</li>
                   ))}
                 </ul>
+                <Link href={href} className="service-entry-link">Explore this service <ArrowRight size={17} aria-hidden /></Link>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#081B33] py-24 text-white">
-        <div className="site-container">
+      <section className="dark-section py-24 text-white">
+        <div className="site-container relative">
           <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
             <div>
               <p className="eyebrow !text-cyan-300">Technology coverage</p>
@@ -185,11 +186,11 @@ export default function ServicesPage() {
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {technologyGroups.map(([group, items]) => (
-                <div key={group} className="rounded-3xl border border-white/10 bg-white/[0.06] p-6">
+                <div key={group} className="border-t border-white/30 py-6" data-reveal>
                   <h3 className="display-font text-2xl font-bold tracking-[-0.03em]">{group}</h3>
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="mt-5 grid grid-cols-2 gap-x-6">
                     {items.map((item) => (
-                      <span key={item} className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-bold text-slate-100">
+                      <span key={item} className="border-b border-white/10 py-2 text-xs font-bold text-slate-200">
                         {item}
                       </span>
                     ))}
@@ -201,7 +202,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-[#F8FAFC] py-20">
+      <section className="soft-section py-20">
         <div className="site-container grid gap-10 lg:grid-cols-3">
           <div><p className="eyebrow">How clients engage us</p><h2 className="section-title mt-5">The right shape for the work.</h2></div>
           {[
@@ -215,7 +216,7 @@ export default function ServicesPage() {
       <section className="bg-blue-600 py-20 text-white">
         <div className="site-container flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
           <h2 className="display-font max-w-3xl text-4xl font-semibold tracking-[-0.04em]">Let&apos;s define the smallest useful first step.</h2>
-          <Link href="/contactus" className="inline-flex items-center gap-2 rounded-md bg-white px-6 py-4 font-extrabold text-blue-700">Discuss your needs <ArrowRight size={18} aria-hidden /></Link>
+          <Link href="/contactus" className="button-light">Discuss your needs <ArrowRight size={18} aria-hidden /></Link>
         </div>
       </section>
     </>

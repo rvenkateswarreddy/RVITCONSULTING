@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BriefcaseBusiness, CheckCircle, Globe2, Megaphone, Target, Users } from "lucide-react";
 import { createPageMetadata } from "../seo";
+import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Marketing Support",
@@ -54,33 +55,24 @@ const process = [
 export default function MarketingPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#081B33] text-white">
-        <Image
-          src="/assets/brand/consulting-team-hero.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center opacity-45"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.96)_48%,rgba(8,27,51,.58)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/75 via-transparent to-[#081B33]/20" />
-        <div className="site-container relative flex min-h-[560px] items-center py-24 md:py-32">
-          <div className="max-w-5xl">
-            <p className="eyebrow !text-cyan-300">Career and business marketing</p>
-            <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">
-              Improve visibility in the markets that matter.
+      <section className="cinematic-hero marketing-hero">
+        <CinematicMedia video="/assets/media/marketing-hero.mp4" poster="/assets/media/marketing-team.jpg" priority position="center" />
+        <div className="cinematic-shade" />
+        <div className="site-container cinematic-content">
+          <div className="max-w-4xl" data-reveal>
+            <h1 className="hero-display">
+              Be understood. Be visible. <em>Be chosen.</em>
             </h1>
-            <p className="mt-8 max-w-3xl text-xl leading-9 text-slate-200">
+            <p className="hero-copy">
               RV IT helps professionals and businesses present themselves clearly across
               local and global markets, with practical positioning, profile improvement,
               and market communication support.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contactus?service=marketing-support" className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-4 font-bold text-white hover:bg-blue-700">
+            <div className="hero-actions">
+              <Link href="/contactus?service=marketing-support" className="button-primary">
                 Request marketing support <ArrowRight size={18} aria-hidden />
               </Link>
-              <a href="#global-markets" className="inline-flex items-center justify-center rounded-md border border-white/35 px-6 py-4 font-bold text-white hover:bg-white/10">
+              <a href="#global-markets" className="button-ghost">
                 View market reach
               </a>
             </div>
@@ -95,7 +87,7 @@ export default function MarketingPage() {
             ["Business visibility", "Clarify service messaging and strengthen digital market presence."],
             ["Global reach", "Support market positioning across the USA, India, Europe, Middle East, Africa, and Asia Pacific."],
           ].map(([title, text]) => (
-            <div key={title} className="border-l border-slate-200 px-6 py-8 last:border-r">
+            <div key={title} className="border-l border-slate-200 px-6 py-8 last:border-r" data-reveal>
               <h2 className="font-extrabold text-[#081B33]">{title}</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
             </div>
@@ -103,9 +95,13 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32">
+      <section className="editorial-section">
         <div className="site-container grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <article className="border border-slate-200 bg-[#F8FAFC] p-7 md:p-9">
+          <div className="marketing-photo lg:col-span-2" data-reveal>
+            <Image src="/assets/media/marketing-presentation.jpg" alt="A business team shaping a market presentation" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 1240px" />
+            <p>Good marketing makes the value clear before it asks for attention.</p>
+          </div>
+          <article className="rounded-[28px] border border-slate-200 bg-[#F8FAFC] p-7 md:p-9" data-reveal="left">
             <Users className="text-blue-600" size={30} aria-hidden />
             <p className="eyebrow mt-8">For professionals</p>
             <h2 className="section-title mt-5">Career profile marketing.</h2>
@@ -123,7 +119,7 @@ export default function MarketingPage() {
             </div>
           </article>
 
-          <article className="border border-slate-200 bg-white p-7 shadow-[0_18px_55px_rgba(8,27,51,0.06)] md:p-9">
+          <article className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-[0_18px_55px_rgba(8,27,51,0.06)] md:p-9" data-reveal="right">
             <BriefcaseBusiness className="text-blue-600" size={30} aria-hidden />
             <p className="eyebrow mt-8">For businesses</p>
             <h2 className="section-title mt-5">Business growth marketing.</h2>
@@ -167,6 +163,7 @@ export default function MarketingPage() {
               <div
                 key={region}
                 className="grid gap-3 border-b border-slate-200 px-6 py-7 last:border-b-0 md:grid-cols-[220px_1fr] md:gap-10 md:px-10 md:py-8"
+                data-reveal
               >
                 <dt className="flex items-center gap-3 font-extrabold text-[#081B33]">
                   <span className="h-2 w-2 rounded-full bg-cyan-500" aria-hidden />
@@ -179,7 +176,7 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      <section className="py-24 md:py-28">
+      <section className="editorial-section">
         <div className="site-container grid gap-14 lg:grid-cols-[.85fr_1.15fr]">
           <div>
             <Target className="text-blue-600" size={32} aria-hidden />
@@ -192,7 +189,7 @@ export default function MarketingPage() {
           </div>
           <div className="grid gap-4">
             {process.map(([number, title, text]) => (
-              <div key={title} className="grid gap-5 border border-slate-200 bg-white p-6 md:grid-cols-[70px_1fr]">
+              <div key={title} className="process-step" data-reveal>
                 <div className="display-font text-3xl font-semibold tracking-[-0.04em] text-blue-600">{number}</div>
                 <div>
                   <h3 className="font-extrabold text-[#081B33]">{title}</h3>
@@ -204,15 +201,15 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      <section className="bg-blue-600 py-20 text-white">
-        <div className="site-container flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+      <section className="dark-section py-20 text-white">
+        <div className="site-container relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
           <div>
             <Megaphone className="text-blue-100" size={32} aria-hidden />
             <h2 className="display-font mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.04em]">
               Ready to improve your market visibility?
             </h2>
           </div>
-          <Link href="/contactus?service=marketing-support" className="inline-flex shrink-0 items-center gap-2 rounded-md bg-white px-6 py-4 font-extrabold text-blue-700 hover:bg-blue-50">
+          <Link href="/contactus?service=marketing-support" className="button-light shrink-0">
             Start marketing support <ArrowRight size={18} aria-hidden />
           </Link>
         </div>

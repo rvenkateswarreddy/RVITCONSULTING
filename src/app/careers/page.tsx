@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ArrowRight, CheckCircle, FileText, MapPin, ShieldCheck, Users } from "lucide-react";
 import CloudWorkflowStatus from "../components/CloudWorkflowStatus";
+import CinematicMedia from "../components/CinematicMedia";
 import { functionsEndpoint } from "@/lib/functions-api";
 
 const initialForm = {
@@ -214,31 +215,23 @@ export default function CareersPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#081B33] text-white">
-        <Image
-          src="/assets/brand/consulting-team-hero.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center opacity-40"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.96)_48%,rgba(8,27,51,.58)_100%)]" />
-        <div className="site-container relative grid min-h-[590px] items-end py-24 md:py-32">
-          <div className="max-w-4xl">
-            <p className="eyebrow !text-cyan-300">We are hiring</p>
-            <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.03] tracking-[-0.06em] md:text-7xl">
-              Opportunities across the technology market.
+      <section className="cinematic-hero careers-hero">
+        <CinematicMedia video="/assets/media/careers-hero.mp4" poster="/assets/media/careers-collaboration.jpg" priority position="center" />
+        <div className="cinematic-shade" />
+        <div className="site-container cinematic-content">
+          <div className="max-w-4xl" data-reveal>
+            <h1 className="hero-display">
+              Your next challenge <em>starts here.</em>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
+            <p className="hero-copy">
               We hire technology, project delivery, support, HR, and recruitment professionals
               for active roles, contract needs, and upcoming client assignments.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a href="#open-roles" className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700">
+            <div className="hero-actions">
+              <a href="#open-roles" className="button-primary">
                 View hiring areas <ArrowRight size={18} aria-hidden />
               </a>
-              <a href="#apply" className="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur hover:bg-white/15">
+              <a href="#apply" className="button-ghost">
                 Apply now
               </a>
             </div>
@@ -253,7 +246,7 @@ export default function CareersPage() {
             ["Flexible engagement", "Full-time, contract, part-time, project support, and client-aligned needs."],
             ["Fast apply path", "Select a role area, upload your resume, and our team reviews your profile."],
           ].map(([title, text]) => (
-            <div key={title} className="border-l border-slate-200 px-6 py-8 last:border-r">
+            <div key={title} className="border-l border-slate-200 px-6 py-8 last:border-r" data-reveal>
               <h2 className="font-extrabold text-[#081B33]">{title}</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
             </div>
@@ -273,54 +266,41 @@ export default function CareersPage() {
               </p>
             </div>
 
-            <div className="relative min-h-[430px] overflow-hidden bg-[#081B33] shadow-[0_24px_70px_rgba(8,27,51,0.14)]">
-              <Image
-                src="/assets/WhyChooseUs/team-2.png"
-                alt="Technology consultants discussing delivery priorities"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/82 via-[#081B33]/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
-                <p className="display-font max-w-md text-2xl font-semibold leading-tight">
-                  From engineering and cloud to HR and recruitment, we are building a serious talent network.
-                </p>
-              </div>
+            <div className="career-photo" data-reveal="right">
+              <Image src="/assets/media/careers-planning.jpg" alt="A technology team planning together around a table" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 52vw" />
+              <div className="career-photo-caption">Work with people who value clear thinking, useful delivery, and shared ownership.</div>
             </div>
           </div>
 
           <div className="mt-14 grid gap-5 lg:grid-cols-2">
             {hiringDomains.map((domain, index) => (
-              <article key={domain.title} className="overflow-hidden border border-slate-200 bg-white shadow-[0_18px_55px_rgba(8,27,51,0.06)]">
-                <div className="border-b border-slate-200 bg-[#081B33] p-6 text-white">
+              <article key={domain.title} className="role-board" data-reveal>
+                <div className="role-board-heading">
                   <div className="flex items-start justify-between gap-6">
                     <div>
-                      <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-cyan-200">
-                        {String(index + 1).padStart(2, "0")} / Hiring domain
-                      </p>
-                      <h3 className="display-font mt-3 text-2xl font-semibold tracking-[-0.035em]">{domain.title}</h3>
+                      <p className="role-board-number">{String(index + 1).padStart(2, "0")}</p>
+                      <h3>{domain.title}</h3>
                     </div>
                     <button
                       type="button"
                       onClick={() => applyFor(domain.roles[0])}
-                      className="shrink-0 rounded-md bg-white px-4 py-2 text-sm font-extrabold text-[#081B33] hover:bg-cyan-50"
+                      className="role-board-apply"
                     >
                       Apply
                     </button>
                   </div>
-                  <p className="mt-4 max-w-xl text-sm leading-6 text-slate-300">{domain.description}</p>
+                  <p className="role-board-description">{domain.description}</p>
                 </div>
-                <div className="flex flex-wrap gap-2 p-6">
+                <div className="role-board-list">
                   {domain.roles.map((role) => (
                     <button
                       key={role}
                       type="button"
                       onClick={() => applyFor(role)}
-                      className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-extrabold text-blue-700 transition hover:bg-blue-600 hover:text-white"
+                      className="role-link"
                       aria-label={`Apply for ${role}`}
                     >
-                      {role}
+                      <span>{role}</span><ArrowRight size={15} aria-hidden />
                     </button>
                   ))}
                 </div>
@@ -342,7 +322,7 @@ export default function CareersPage() {
           </div>
           <div className="grid gap-4">
             {hiringSteps.map(([number, title, text]) => (
-              <div key={title} className="grid gap-5 border border-slate-200 bg-white p-6 md:grid-cols-[70px_1fr]">
+              <div key={title} className="process-step" data-reveal>
                 <div className="display-font text-3xl font-semibold tracking-[-0.04em] text-blue-600">{number}</div>
                 <div>
                   <h3 className="font-extrabold text-[#081B33]">{title}</h3>

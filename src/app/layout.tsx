@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ExperienceLayer from "./components/ExperienceLayer";
 import {
   defaultDescription,
   siteName,
@@ -136,6 +137,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <ExperienceLayer />
       </body>
     </html>
   );

@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { Suspense } from "react";
 import { Clock, Mail, MessageSquare } from "lucide-react";
 import ContactForm from "../contact/ContactForm";
 import { createPageMetadata } from "../seo";
+import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Contact",
@@ -13,29 +13,20 @@ export const metadata = createPageMetadata(
 export default function ContactPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[#081B33] text-white">
-        <Image
-          src="/assets/Industries/Education.webp"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center opacity-45"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#081B33_0%,rgba(8,27,51,.95)_50%,rgba(8,27,51,.55)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#081B33]/75 via-transparent to-[#081B33]/20" />
-        <div className="site-container relative flex min-h-[500px] items-center py-24 md:py-28">
-          <div className="max-w-5xl">
-            <p className="eyebrow !text-cyan-300">Talk to the right person</p>
-            <h1 className="display-font balanced mt-6 text-5xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-7xl">Start with the challenge, not a sales pitch.</h1>
-            <p className="mt-7 max-w-3xl text-xl leading-9 text-slate-200">Tell us what you are trying to change, what is getting in the way, and where a thoughtful technology partner could help.</p>
+      <section className="cinematic-hero contact-hero">
+        <CinematicMedia video="/assets/media/contact-hero.mp4" poster="/assets/media/contact-conversation-real.jpg" priority position="center" />
+        <div className="cinematic-shade" />
+        <div className="site-container cinematic-content">
+          <div className="ml-auto max-w-3xl" data-reveal="right">
+            <h1 className="hero-display">Start with the <em>challenge.</em></h1>
+            <p className="hero-copy">Tell us what you are trying to change, what is getting in the way, and where a thoughtful technology partner could help.</p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
+      <section className="editorial-section">
         <div className="site-container grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
-          <aside>
+          <aside data-reveal="left">
             <p className="eyebrow">Before we recommend anything</p>
             <h2 className="display-font mt-5 text-3xl font-semibold tracking-[-0.035em] text-[#081B33]">A useful first conversation.</h2>
             <p className="mt-5 leading-7 text-slate-600">No lengthy procurement form. Share enough context for us to bring the right person into the conversation.</p>
@@ -46,7 +37,7 @@ export default function ContactPage() {
             </div>
           </aside>
 
-          <div className="border border-slate-200 bg-[#F8FAFC] p-6 shadow-[0_20px_60px_rgba(8,27,51,0.08)] md:p-10">
+          <div className="rounded-[28px] border border-slate-200 bg-[#F8FAFC] p-6 shadow-[0_24px_80px_rgba(8,27,51,0.1)] md:p-10" data-reveal="right">
             <h2 className="display-font text-3xl font-semibold tracking-[-0.035em] text-[#081B33]">Tell us what you are working on</h2>
             <p className="mt-3 text-slate-600">Fields marked with * are required.</p>
             <div className="mt-8">
