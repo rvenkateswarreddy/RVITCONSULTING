@@ -34,8 +34,12 @@ await summaries.nth(1).click();
 await page.waitForTimeout(250);
 await section.screenshot({ path: fileURLToPath(new URL("second-group-open.png", outputDir)) });
 const after = await measure();
+const removedLabels = {
+  secureSubmission: await page.getByText("Secure submission", { exact: true }).count(),
+  liveCloudWorkflow: await page.getByText("Live cloud workflow online", { exact: true }).count(),
+};
 
-const report = { baseUrl, summaryCount, before, after };
+const report = { baseUrl, summaryCount, before, after, removedLabels };
 await writeFile(new URL("report.json", outputDir), JSON.stringify(report, null, 2));
 console.log(JSON.stringify(report, null, 2));
 await browser.close();

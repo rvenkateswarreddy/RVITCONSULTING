@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight, CheckCircle, FileText, MapPin, ShieldCheck, Users } from "lucide-react";
-import CloudWorkflowStatus from "../components/CloudWorkflowStatus";
+import { ArrowRight, CheckCircle, MapPin, ShieldCheck, Users } from "lucide-react";
 import CinematicMedia from "../components/CinematicMedia";
 import { functionsEndpoint } from "@/lib/functions-api";
 
@@ -360,20 +359,6 @@ export default function CareersPage() {
               Submit your resume once. We will review it for active and future technology,
               HR, recruitment, support, cloud, data, and enterprise platform opportunities.
             </p>
-            <div className="mt-10 border-t border-slate-200 pt-7">
-              <div className="flex gap-4">
-                <FileText className="mt-1 text-blue-600" size={21} aria-hidden />
-                <div>
-                  <h3 className="font-extrabold text-[#081B33]">Secure submission</h3>
-                  <p className="mt-1 text-sm leading-6 text-slate-600">
-                    Your resume is sent through the configured Firebase function workflow.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-8">
-              <CloudWorkflowStatus />
-            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="relative border border-slate-200 bg-white p-6 shadow-[0_24px_80px_rgba(8,27,51,0.1)] md:p-10">
