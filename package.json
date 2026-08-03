@@ -11,6 +11,7 @@
     "audit:mobile": "node scripts/mobile-navigation-audit.mjs",
     "audit:careers": "node scripts/careers-accordion-audit.mjs",
     "audit:learning": "node scripts/learning-accordion-audit.mjs",
+    "audit:project-support": "node scripts/project-support-audit.mjs",
     "audit:live-mobile": "node scripts/live-mobile-audit.mjs"
   },
   "dependencies": {
