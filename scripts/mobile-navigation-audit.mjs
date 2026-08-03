@@ -7,14 +7,16 @@ const outputDir = new URL("../artifacts/mobile-navigation-audit/", import.meta.u
 const routes = [
   ["home", "/"],
   ["services", "/services"],
-  ["marketing", "/marketing"],
-  ["project-support", "/project-support"],
-  ["corporate-trainings", "/corporate-trainings"],
   ["industries", "/industries"],
+  ["corporate-trainings", "/corporate-trainings"],
   ["careers", "/careers"],
   ["about", "/about"],
+  ["marketing", "/marketing"],
+  ["project-support", "/project-support"],
   ["contact", "/contactus"],
 ];
+
+const primaryPaths = new Set(["/services", "/industries", "/corporate-trainings", "/careers", "/about"]);
 
 await mkdir(outputDir, { recursive: true });
 const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
@@ -32,14 +34,18 @@ const report = { baseUrl, generatedAt: new Date().toISOString(), pages: [], erro
 
 for (const [name, path] of routes) {
   if (path !== "/") {
-    const menuButton = page.locator('[data-testid="menu-toggle"]');
-    if ((await menuButton.count()) !== 1) throw new Error(`Missing menu button before ${path}`);
-    await menuButton.click();
-    await page.waitForTimeout(320);
-    const routeLink = page.locator(`#mobile-navigation a[href="${path}"]`);
-    if ((await routeLink.count()) !== 1) throw new Error(`Missing unique mobile link for ${path}`);
-    await routeLink.click();
-    await page.waitForURL(`${baseUrl}${path}`, { timeout: 15000 });
+    if (primaryPaths.has(path)) {
+      const menuButton = page.locator('[data-testid="menu-toggle"]');
+      if ((await menuButton.count()) !== 1) throw new Error(`Missing menu button before ${path}`);
+      await menuButton.click();
+      await page.waitForTimeout(320);
+      const routeLink = page.locator(`#mobile-navigation a[href="${path}"]`);
+      if ((await routeLink.count()) !== 1) throw new Error(`Missing unique mobile link for ${path}`);
+      await routeLink.click();
+      await page.waitForURL(`${baseUrl}${path}`, { timeout: 15000 });
+    } else {
+      await page.goto(`${baseUrl}${path}`, { waitUntil: "domcontentloaded" });
+    }
     await page.waitForTimeout(650);
   }
 

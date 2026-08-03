@@ -56,7 +56,7 @@ export default function MarketingPage() {
   return (
     <>
       <section className="cinematic-hero marketing-hero">
-        <CinematicMedia video="/assets/media/marketing-hero.mp4" poster="/assets/media/marketing-team.jpg" priority position="center" />
+        <CinematicMedia image="/assets/media/marketing-team.jpg" alt="Marketing professionals planning a campaign" priority position="center" />
         <div className="cinematic-shade" />
         <div className="site-container cinematic-content">
           <div className="max-w-4xl" data-reveal>

@@ -27,7 +27,7 @@ export default function AboutPage() {
   return (
     <>
       <section className="cinematic-hero about-photo-hero">
-        <CinematicMedia video="/assets/media/about-hero.mp4" poster="/assets/media/about-consultants.jpg" priority position="center" />
+        <CinematicMedia image="/assets/media/about-consultants.jpg" alt="RV IT consultants discussing a technology initiative" priority position="center" />
         <div className="cinematic-shade" />
         <div className="site-container cinematic-content">
           <div className="max-w-5xl" data-reveal>

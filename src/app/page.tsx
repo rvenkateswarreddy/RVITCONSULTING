@@ -118,9 +118,8 @@ export default function Home() {
           </div>
 
           <div className="bento-grid mt-16">
-            {capabilities.map((item, index) => (
+            {capabilities.map((item) => (
               <Link key={item.title} href={item.href} className="bento-card group" data-reveal>
-                <span className="bento-number">Capability 0{index + 1}</span>
                 <span className="bento-icon"><item.icon size={25} strokeWidth={1.8} aria-hidden /></span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>

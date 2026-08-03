@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="cinematic-hero contact-hero">
-        <CinematicMedia video="/assets/media/contact-hero.mp4" poster="/assets/media/contact-conversation-real.jpg" priority position="center" />
+        <CinematicMedia image="/assets/media/contact-conversation-real.jpg" alt="Business professionals beginning a consultation" priority position="center" />
         <div className="cinematic-shade" />
         <div className="site-container cinematic-content">
           <div className="ml-auto max-w-3xl" data-reveal="right">

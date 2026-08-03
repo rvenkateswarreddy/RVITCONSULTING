@@ -6,6 +6,7 @@ import {
   Blocks,
   BriefcaseBusiness,
   Cloud,
+  ChevronDown,
   GraduationCap,
   Megaphone,
   ShieldCheck,
@@ -152,20 +153,23 @@ export default function ServicesPage() {
           </aside>
           <div className="service-catalogue">
             {services.map(({ title, body, icon: Icon, id, features, href }, index) => (
-              <article id={id} key={title} className="service-entry" data-reveal="right">
-                <div className="service-entry-heading">
+              <details id={id} key={title} className="service-entry" data-reveal="right" open={index === 0}>
+                <summary className="service-entry-heading">
                   <span>0{index + 1}</span>
                   <Icon className="text-blue-600" size={30} strokeWidth={1.7} aria-hidden />
-                  <h2>{title}</h2>
+                  <strong>{title}</strong>
+                  <ChevronDown className="service-entry-toggle" size={20} aria-hidden />
+                </summary>
+                <div className="service-entry-content">
+                  <p className="service-entry-body">{body}</p>
+                  <ul className="service-feature-list">
+                    {features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                  <Link href={href} className="service-entry-link">Explore this service <ArrowRight size={17} aria-hidden /></Link>
                 </div>
-                <p className="service-entry-body">{body}</p>
-                <ul className="service-feature-list">
-                  {features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
-                <Link href={href} className="service-entry-link">Explore this service <ArrowRight size={17} aria-hidden /></Link>
-              </article>
+              </details>
             ))}
           </div>
         </div>

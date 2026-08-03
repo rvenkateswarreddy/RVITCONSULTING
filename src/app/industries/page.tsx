@@ -21,7 +21,7 @@ export default function IndustriesPage() {
   return (
     <>
       <section className="industry-photo-hero text-white">
-        <CinematicMedia video="/assets/media/industries-hero.mp4" poster="/assets/Industries/Finance.webp" priority position="center" className="industry-hero-video" />
+        <CinematicMedia image="/assets/Industries/Finance.webp" alt="Financial services team at work" priority position="center" className="industry-hero-video" />
         <div className="industry-video-shade" />
         <div className="site-container industry-hero-grid">
           <div className="max-w-3xl" data-reveal>

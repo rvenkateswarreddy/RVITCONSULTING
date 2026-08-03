@@ -47,7 +47,7 @@ export default function ProjectSupportPage() {
   return (
     <>
       <section className="cinematic-hero support-hero">
-        <CinematicMedia video="/assets/media/project-support-hero.mp4" poster="/assets/media/project-operations-real.jpg" priority position="center" />
+        <CinematicMedia image="/assets/media/project-operations-real.jpg" alt="Technology operations team working together" priority position="center" />
         <div className="cinematic-shade" />
         <div className="site-container cinematic-content">
           <div className="ml-auto max-w-3xl" data-reveal="right">

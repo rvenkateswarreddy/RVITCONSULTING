@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BookOpenCheck, CheckCircle, GraduationCap, Users } from "lucide-react";
+import { ArrowRight, BookOpenCheck, CheckCircle, ChevronDown, GraduationCap, Users } from "lucide-react";
 import { createPageMetadata } from "../seo";
 import CinematicMedia from "../components/CinematicMedia";
 
@@ -158,12 +158,16 @@ export default function CorporateTrainingsPage() {
             </p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            {trainingPrograms.map((group) => (
-              <article key={group.category} className="rounded-[24px] border border-slate-200 bg-white p-7 shadow-[0_18px_55px_rgba(8,27,51,0.05)]" data-reveal>
-                <h3 className="display-font text-2xl font-extrabold tracking-[-0.03em] text-[#081B33]">
-                  {group.category}
-                </h3>
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {trainingPrograms.map((group, index) => (
+              <details key={group.category} className="learning-group" data-reveal open={index === 0}>
+                <summary className="learning-group-heading">
+                  <span>
+                    <strong>{group.category}</strong>
+                    <small>{group.programs.length} learning topics</small>
+                  </span>
+                  <ChevronDown size={20} aria-hidden />
+                </summary>
+                <div className="learning-group-programs">
                   {group.programs.map((program) => (
                     <div key={program} className="flex items-start gap-3">
                       <CheckCircle className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden />
@@ -171,7 +175,7 @@ export default function CorporateTrainingsPage() {
                     </div>
                   ))}
                 </div>
-              </article>
+              </details>
             ))}
           </div>
 

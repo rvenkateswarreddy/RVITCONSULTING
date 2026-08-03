@@ -216,7 +216,7 @@ export default function CareersPage() {
   return (
     <>
       <section className="cinematic-hero careers-hero">
-        <CinematicMedia video="/assets/media/careers-hero.mp4" poster="/assets/media/careers-collaboration.jpg" priority position="center" />
+        <CinematicMedia image="/assets/media/careers-collaboration.jpg" alt="Colleagues collaborating in a modern workplace" priority position="center" />
         <div className="cinematic-shade" />
         <div className="site-container cinematic-content">
           <div className="max-w-4xl" data-reveal>
