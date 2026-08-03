@@ -402,6 +402,7 @@ textarea {
 .service-feature-list li:nth-child(odd) { margin-right: 1.2rem; }
 .service-entry-link { display: inline-flex; align-items: center; gap: .5rem; margin: 1.8rem 0 0 94px; color: var(--blue); font-size: .84rem; font-weight: 800; }
 
+.learning-group-list { display: grid; gap: .75rem; }
 .learning-group {
   border: 1px solid #dbe3ec;
   border-radius: 12px;
@@ -416,7 +417,7 @@ textarea {
 .learning-group-heading small { color: #64748b; font-size: .76rem; font-weight: 650; }
 .learning-group-heading > svg { flex: 0 0 auto; color: var(--blue); transition: transform 180ms ease; }
 .learning-group[open] .learning-group-heading > svg { transform: rotate(180deg); }
-.learning-group-programs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1.25rem; margin-top: 1.4rem; border-top: 1px solid #e2e8f0; padding-top: 1.4rem; }
+.learning-group-programs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem 1.5rem; margin-top: 1.4rem; border-top: 1px solid #e2e8f0; padding-top: 1.4rem; }
 
 .career-photo { position: relative; min-height: 470px; overflow: hidden; background: var(--navy); }
 .career-photo::after { position: absolute; inset: 0; content: ""; background: linear-gradient(0deg, rgba(4,17,34,.9), transparent 60%); }
@@ -642,6 +643,7 @@ textarea {
   .scroll-story-media,
   .service-sticky-media { position: relative; top: auto; min-height: 520px; }
   .story-chapter { min-height: auto; }
+  .learning-group-programs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .role-board-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .industry-hero-grid { padding-top: 6rem; }
 }
@@ -657,12 +659,9 @@ textarea {
 }
 
 @media (min-width: 640px) {
-  details.service-entry:not([open]) > .service-entry-content,
-  details.learning-group:not([open]) > .learning-group-programs { display: grid; }
-  .service-entry-toggle,
-  .learning-group-heading > svg { display: none; }
-  .service-entry-heading,
-  .learning-group-heading { cursor: default; }
+  details.service-entry:not([open]) > .service-entry-content { display: grid; }
+  .service-entry-toggle { display: none; }
+  .service-entry-heading { cursor: default; }
 }
 
 @media (max-width: 639px) {

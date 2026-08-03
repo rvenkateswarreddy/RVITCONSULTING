@@ -157,9 +157,9 @@ export default function CorporateTrainingsPage() {
               or role-based learning paths depending on the team need.
             </p>
           </div>
-          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+          <div className="learning-group-list mt-12">
             {trainingPrograms.map((group, index) => (
-              <details key={group.category} className="learning-group" data-reveal open={index === 0}>
+              <details key={group.category} name="training-programs" className="learning-group" data-reveal open={index === 0}>
                 <summary className="learning-group-heading">
                   <span>
                     <strong>{group.category}</strong>
