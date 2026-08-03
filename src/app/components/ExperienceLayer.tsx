@@ -2,38 +2,48 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Cookie, X } from "lucide-react";
 
 const consentKey = "rvit-cookie-preference";
 
 export default function ExperienceLayer() {
   const [cookieOpen, setCookieOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     document.documentElement.classList.add("experience-ready");
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    let observer: IntersectionObserver | undefined;
+    const safetyTimer = window.setTimeout(() => {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }, 1400);
 
     if (reduceMotion || !("IntersectionObserver" in window)) {
       revealItems.forEach((item) => item.classList.add("is-visible"));
     } else {
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
+              observer?.unobserve(entry.target);
             }
           });
         },
         { rootMargin: "0px 0px -9%", threshold: 0.12 },
       );
-      revealItems.forEach((item) => observer.observe(item));
+      revealItems.forEach((item) => observer?.observe(item));
 
-      return () => observer.disconnect();
     }
-  }, []);
+
+    return () => {
+      observer?.disconnect();
+      window.clearTimeout(safetyTimer);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     const updateProgress = () => {

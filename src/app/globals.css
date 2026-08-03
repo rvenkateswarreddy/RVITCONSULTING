@@ -397,11 +397,13 @@ textarea {
 .career-photo::after { position: absolute; inset: 0; content: ""; background: linear-gradient(0deg, rgba(4,17,34,.9), transparent 60%); }
 .career-photo-caption { position: absolute; z-index: 2; right: 2rem; bottom: 2rem; left: 2rem; max-width: 530px; color: white; font-size: clamp(1.5rem, 3vw, 2.3rem); font-weight: 650; letter-spacing: -.04em; line-height: 1.12; }
 .role-board { border-top: 3px solid var(--navy); background: white; padding: 1.8rem 2rem 2rem; box-shadow: 0 18px 50px rgba(8,27,51,.07); }
-.role-board-heading { color: var(--navy); }
+.role-board-heading { color: var(--navy); cursor: pointer; list-style: none; }
+.role-board-heading::-webkit-details-marker { display: none; }
 .role-board-heading > div { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
 .role-board-number { color: var(--blue); font-size: .74rem; font-weight: 800; }
 .role-board-heading h3 { margin-top: .55rem; font-size: 1.45rem; font-weight: 750; letter-spacing: -.035em; }
-.role-board-apply { border-bottom: 1px solid var(--navy); padding: .25rem 0; font-size: .8rem; font-weight: 800; }
+.role-board-toggle { display: inline-flex; align-items: center; gap: .4rem; border-bottom: 1px solid var(--navy); padding: .25rem 0; font-size: .76rem; font-weight: 800; white-space: nowrap; }
+.role-board[open] .role-board-toggle svg { transform: rotate(90deg); }
 .role-board-description { max-width: 590px; margin-top: 1rem; color: #607086; font-size: .86rem; line-height: 1.65; }
 .role-board-list { margin-top: 1.4rem; border-top: 1px solid #dde4ec; }
 .role-link { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #e3e8ee; padding: .75rem 0; color: #334155; text-align: left; font-size: .82rem; font-weight: 650; transition: color 180ms ease, padding 180ms ease; }
@@ -627,6 +629,13 @@ textarea {
   .industry-hero-grid { grid-template-columns: minmax(0,.78fr) minmax(520px,1.22fr); }
 }
 
+@media (min-width: 640px) {
+  details.role-board:not([open]) > .role-board-description,
+  details.role-board:not([open]) > .role-board-list { display: block; }
+  .role-board-toggle { display: none; }
+  .role-board-heading { cursor: default; }
+}
+
 @media (max-width: 639px) {
   .site-container { width: min(calc(100% - 1.25rem), 1240px); }
   .cinematic-hero { min-height: calc(100svh - 78px); }
@@ -660,4 +669,10 @@ textarea {
   .marketing-photo { min-height: 390px; }
   .marketing-photo p { right: 1.25rem; bottom: 1.25rem; left: 1.25rem; }
   .role-board { padding: 1.4rem; }
+  .experience-ready [data-reveal],
+  .experience-ready [data-reveal="left"],
+  .experience-ready [data-reveal="right"] {
+    opacity: 1;
+    transform: none;
+  }
 }

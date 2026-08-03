@@ -274,23 +274,17 @@ export default function CareersPage() {
 
           <div className="mt-14 grid gap-5 lg:grid-cols-2">
             {hiringDomains.map((domain, index) => (
-              <article key={domain.title} className="role-board" data-reveal>
-                <div className="role-board-heading">
-                  <div className="flex items-start justify-between gap-6">
+              <details key={domain.title} className="role-board" open={index === 0} data-reveal>
+                <summary className="role-board-heading">
+                  <div>
                     <div>
                       <p className="role-board-number">{String(index + 1).padStart(2, "0")}</p>
                       <h3>{domain.title}</h3>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => applyFor(domain.roles[0])}
-                      className="role-board-apply"
-                    >
-                      Apply
-                    </button>
+                    <span className="role-board-toggle">View roles <ArrowRight size={15} aria-hidden /></span>
                   </div>
-                  <p className="role-board-description">{domain.description}</p>
-                </div>
+                </summary>
+                <p className="role-board-description">{domain.description}</p>
                 <div className="role-board-list">
                   {domain.roles.map((role) => (
                     <button
@@ -304,7 +298,7 @@ export default function CareersPage() {
                     </button>
                   ))}
                 </div>
-              </article>
+              </details>
             ))}
           </div>
         </div>
