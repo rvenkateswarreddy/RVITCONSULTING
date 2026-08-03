@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "audit:visual": "node scripts/visual-audit.mjs",
     "audit:mobile": "node scripts/mobile-navigation-audit.mjs",
+    "audit:careers": "node scripts/careers-accordion-audit.mjs",
     "audit:live-mobile": "node scripts/live-mobile-audit.mjs"
   },
   "dependencies": {

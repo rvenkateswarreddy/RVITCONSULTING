@@ -164,6 +164,7 @@ const hiringSteps = [
 ] as const;
 
 export default function CareersPage() {
+  const [openDomain, setOpenDomain] = useState(0);
   const [form, setForm] = useState(initialForm);
   const [resume, setResume] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
@@ -272,16 +273,22 @@ export default function CareersPage() {
             </div>
           </div>
 
-          <div className="mt-14 grid gap-5 lg:grid-cols-2">
+          <div className="role-board-grid mt-14">
             {hiringDomains.map((domain, index) => (
-              <details key={domain.title} className="role-board" open={index === 0} data-reveal>
-                <summary className="role-board-heading">
+              <details key={domain.title} className="role-board" open={openDomain === index} data-reveal>
+                <summary
+                  className="role-board-heading"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setOpenDomain((current) => current === index ? -1 : index);
+                  }}
+                >
                   <div>
                     <div>
                       <p className="role-board-number">{String(index + 1).padStart(2, "0")}</p>
                       <h3>{domain.title}</h3>
                     </div>
-                    <span className="role-board-toggle">View roles <ArrowRight size={15} aria-hidden /></span>
+                    <span className="role-board-toggle">{openDomain === index ? "Hide roles" : "View roles"} <ArrowRight size={15} aria-hidden /></span>
                   </div>
                 </summary>
                 <p className="role-board-description">{domain.description}</p>
