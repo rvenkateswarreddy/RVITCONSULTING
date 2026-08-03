@@ -7,16 +7,16 @@ const outputDir = new URL("../artifacts/mobile-navigation-audit/", import.meta.u
 const routes = [
   ["home", "/"],
   ["services", "/services"],
+  ["project-support", "/project-support"],
   ["industries", "/industries"],
   ["corporate-trainings", "/corporate-trainings"],
   ["careers", "/careers"],
   ["about", "/about"],
   ["marketing", "/marketing"],
-  ["project-support", "/project-support"],
   ["contact", "/contactus"],
 ];
 
-const primaryPaths = new Set(["/services", "/industries", "/corporate-trainings", "/careers", "/about"]);
+const primaryPaths = new Set(["/services", "/project-support", "/industries", "/corporate-trainings", "/careers", "/about"]);
 
 await mkdir(outputDir, { recursive: true });
 const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
