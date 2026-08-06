@@ -56,7 +56,7 @@ export default function MarketingPage() {
   return (
     <>
       <section className="cinematic-hero marketing-hero">
-        <CinematicMedia image="/assets/media/marketing-team.jpg" alt="Marketing professionals planning a campaign" priority position="center" />
+        <CinematicMedia video="/assets/media/marketing-hero.mp4" poster="/assets/media/marketing-team.jpg" priority position="center" />
         <div className="cinematic-shade" />
         <div className="site-container cinematic-content">
           <div className="max-w-4xl" data-reveal>
@@ -95,45 +95,51 @@ export default function MarketingPage() {
         </div>
       </section>
 
-      <section className="editorial-section">
-        <div className="site-container grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div className="marketing-photo lg:col-span-2" data-reveal>
-            <Image src="/assets/media/marketing-presentation.jpg" alt="A business team shaping a market presentation" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 1240px" />
-            <p>Good marketing makes the value clear before it asks for attention.</p>
-          </div>
-          <article className="rounded-[28px] border border-slate-200 bg-[#F8FAFC] p-7 md:p-9" data-reveal="left">
-            <Users className="text-blue-600" size={30} aria-hidden />
-            <p className="eyebrow mt-8">For professionals</p>
-            <h2 className="section-title mt-5">Career profile marketing.</h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
-              We help professionals present their experience, technology skills, and career
-              goals clearly for relevant local and global market opportunities.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {candidateSupport.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden />
-                  <span className="text-sm font-bold leading-6 text-slate-700">{item}</span>
-                </div>
-              ))}
+      <section className="marketing-scroll-stage" aria-label="Marketing support stories">
+        <div className="marketing-scroll-media" aria-hidden="true">
+          <Image src="/assets/media/marketing-presentation.jpg" alt="" fill className="object-cover" sizes="100vw" />
+          <div className="marketing-scroll-shade" />
+          <p>Good marketing makes value clear before it asks for attention.</p>
+        </div>
+
+        <div className="site-container marketing-scroll-track">
+          <article className="marketing-story marketing-story-intro" data-reveal>
+            <div className="marketing-story-panel">
+              <Megaphone size={29} aria-hidden />
+              <p className="marketing-story-label">A clearer market story</p>
+              <h2>Turn capability into a message people understand.</h2>
+              <p>
+                Strong visibility starts before campaigns and outreach. We clarify the
+                audience, the offer, and the proof so every next step has a stronger foundation.
+              </p>
             </div>
           </article>
 
-          <article className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-[0_18px_55px_rgba(8,27,51,0.06)] md:p-9" data-reveal="right">
-            <BriefcaseBusiness className="text-blue-600" size={30} aria-hidden />
-            <p className="eyebrow mt-8">For businesses</p>
-            <h2 className="section-title mt-5">Business growth marketing.</h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
-              We help businesses communicate their services more professionally, improve
-              digital presence, and position offers for the right audience.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {businessSupport.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 shrink-0 text-blue-600" size={17} aria-hidden />
-                  <span className="text-sm font-bold leading-6 text-slate-700">{item}</span>
-                </div>
-              ))}
+          <article className="marketing-story" data-reveal>
+            <div className="marketing-story-panel">
+              <Users size={29} aria-hidden />
+              <p className="marketing-story-label">For professionals</p>
+              <h2>Career profile marketing.</h2>
+              <p>Present your experience, technology skills, and career direction clearly for relevant local and international opportunities.</p>
+              <div className="marketing-story-list">
+                {candidateSupport.map((item) => (
+                  <span key={item}><CheckCircle size={16} aria-hidden />{item}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <article className="marketing-story" data-reveal>
+            <div className="marketing-story-panel">
+              <BriefcaseBusiness size={29} aria-hidden />
+              <p className="marketing-story-label">For businesses</p>
+              <h2>Business growth marketing.</h2>
+              <p>Communicate services professionally, strengthen digital presence, and position each offer for the audience it is built to serve.</p>
+              <div className="marketing-story-list">
+                {businessSupport.map((item) => (
+                  <span key={item}><CheckCircle size={16} aria-hidden />{item}</span>
+                ))}
+              </div>
             </div>
           </article>
         </div>

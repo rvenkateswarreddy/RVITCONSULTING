@@ -451,6 +451,22 @@ textarea {
 .marketing-photo::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, rgba(4,17,34,.92), rgba(4,17,34,.08)); }
 .marketing-photo p { position: absolute; z-index: 2; bottom: 2.2rem; left: 2.2rem; max-width: 530px; color: white; font-size: clamp(1.8rem, 4vw, 3.4rem); font-weight: 650; letter-spacing: -.055em; line-height: 1.02; }
 
+.marketing-scroll-stage { position: relative; background: #06172c; }
+.marketing-scroll-media { position: sticky; top: 78px; height: calc(100svh - 78px); overflow: hidden; background: #06172c; }
+.marketing-scroll-media > img { animation: marketing-ambient 18s ease-in-out infinite alternate; }
+.marketing-scroll-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,17,34,.84), rgba(4,17,34,.38) 47%, rgba(4,17,34,.78)), linear-gradient(0deg, rgba(4,17,34,.86), transparent 58%); }
+.marketing-scroll-media > p { position: absolute; z-index: 1; bottom: 2.5rem; left: max(1rem, calc((100vw - 1240px) / 2)); max-width: 500px; color: rgba(255,255,255,.88); font-size: clamp(1.35rem, 2.5vw, 2.3rem); font-weight: 650; letter-spacing: -.04em; line-height: 1.12; }
+.marketing-scroll-track { position: relative; z-index: 2; margin-top: calc(-100svh + 78px); padding-block: 7vh; }
+.marketing-story { display: flex; min-height: 86svh; align-items: center; justify-content: flex-end; }
+.marketing-story-panel { width: min(610px, 53%); border: 1px solid rgba(255,255,255,.45); border-radius: 14px; background: rgba(255,255,255,.94); padding: clamp(1.75rem, 4vw, 3.25rem); box-shadow: 0 28px 90px rgba(0,0,0,.25); backdrop-filter: blur(18px); }
+.marketing-story-panel > svg { color: var(--blue); }
+.marketing-story-label { margin-top: 1.5rem; color: var(--blue); font-size: .78rem; font-weight: 750; }
+.marketing-story-panel h2 { margin-top: .8rem; color: var(--navy); font-size: clamp(2rem, 4vw, 3.35rem); font-weight: 650; letter-spacing: -.05em; line-height: 1.04; }
+.marketing-story-panel > p:last-of-type { margin-top: 1.25rem; color: #526174; line-height: 1.75; }
+.marketing-story-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .7rem 1rem; margin-top: 1.5rem; border-top: 1px solid #dbe3ec; padding-top: 1.4rem; }
+.marketing-story-list span { display: flex; align-items: flex-start; gap: .55rem; color: #334155; font-size: .76rem; font-weight: 700; line-height: 1.45; }
+.marketing-story-list svg { flex: 0 0 auto; margin-top: .05rem; color: var(--blue); }
+
 .marquee { overflow: hidden; border-block: 1px solid rgba(255,255,255,.14); background: #071a31; color: white; }
 .marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
 .marquee-track span { display: inline-flex; align-items: center; gap: 1.3rem; padding: 1.25rem 1.6rem; color: #d9e7f4; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -634,6 +650,7 @@ textarea {
 .cookie-actions a { margin-left: auto; color: #9ceeff; font-size: .7rem; font-weight: 700; }
 
 @keyframes cinematic-drift { from { transform: scale(1.01); } to { transform: scale(1.07) translate3d(-.5%, -.4%, 0); } }
+@keyframes marketing-ambient { from { transform: scale(1.03) translate3d(0,0,0); } to { transform: scale(1.1) translate3d(-1.2%,-.8%,0); } }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes cookie-in { from { opacity: 0; transform: translateY(25px) scale(.98); } }
 
@@ -672,6 +689,7 @@ textarea {
   }
 
   .cinematic-media { animation: none !important; }
+  .marketing-scroll-media > img { animation: none !important; }
   .cinematic-hero video { display: block; }
   .marquee-track { animation: none !important; flex-wrap: wrap; width: auto; }
   [data-reveal] { opacity: 1 !important; transform: none !important; }
@@ -696,6 +714,8 @@ textarea {
   .learning-group-programs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .role-board-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .industry-hero-grid { padding-top: 6rem; }
+  .marketing-scroll-shade { background: linear-gradient(90deg, rgba(4,17,34,.78), rgba(4,17,34,.62)), linear-gradient(0deg, rgba(4,17,34,.9), transparent 58%); }
+  .marketing-story-panel { width: min(680px, 72%); }
 }
 
 @media (min-width: 1280px) {
@@ -755,6 +775,14 @@ textarea {
   .industry-mosaic-item { min-height: 170px; }
   .marketing-photo { min-height: 390px; }
   .marketing-photo p { right: 1.25rem; bottom: 1.25rem; left: 1.25rem; }
+  .marketing-scroll-media { top: 78px; height: calc(100svh - 78px); }
+  .marketing-scroll-media > p { display: none; }
+  .marketing-scroll-track { margin-top: calc(-100svh + 78px); padding-block: 4vh; }
+  .marketing-story { min-height: 84svh; align-items: center; }
+  .marketing-story-panel { width: 100%; border-radius: 10px; background: rgba(255,255,255,.95); padding: 1.4rem; }
+  .marketing-story-panel h2 { font-size: 2rem; }
+  .marketing-story-panel > p:last-of-type { font-size: .9rem; }
+  .marketing-story-list { grid-template-columns: 1fr; gap: .55rem; }
   .role-board { padding: 1.25rem; }
   .role-board-list { grid-template-columns: 1fr; }
   .learning-group { border-radius: 8px; padding: 1.15rem; }

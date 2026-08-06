@@ -8,15 +8,15 @@ const routes = [
   ["home", "/"],
   ["services", "/services"],
   ["project-support", "/project-support"],
+  ["marketing", "/marketing"],
   ["industries", "/industries"],
   ["corporate-trainings", "/corporate-trainings"],
   ["careers", "/careers"],
   ["about", "/about"],
-  ["marketing", "/marketing"],
   ["contact", "/contactus"],
 ];
 
-const primaryPaths = new Set(["/services", "/project-support", "/industries", "/corporate-trainings", "/careers", "/about"]);
+const primaryPaths = new Set(["/services", "/project-support", "/marketing", "/industries", "/corporate-trainings", "/careers", "/about"]);
 
 await mkdir(outputDir, { recursive: true });
 const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });

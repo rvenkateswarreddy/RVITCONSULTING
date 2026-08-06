@@ -9,6 +9,7 @@ import BrandLogo from "./BrandLogo";
 const navItems = [
   { name: "Services", path: "/services" },
   { name: "Project Support", path: "/project-support" },
+  { name: "Marketing", path: "/marketing" },
   { name: "Industries", path: "/industries" },
   { name: "Learning", path: "/corporate-trainings" },
   { name: "Careers", path: "/careers" },
