@@ -1,8 +1,8 @@
 import Image from "next/image";
+import PageIntro from "../components/PageIntro";
 import Link from "next/link";
 import { ArrowRight, Check, Globe2 } from "lucide-react";
 import { createPageMetadata } from "../seo";
-import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "About",
@@ -25,22 +25,20 @@ const locationGroups = [
 
 export default function AboutPage() {
   return (
-    <>
-      <section className="cinematic-hero about-photo-hero">
-        <CinematicMedia image="/assets/media/about-consultants.jpg" alt="RV IT consultants discussing a technology initiative" priority position="center" />
-        <div className="cinematic-shade" />
-        <div className="site-container cinematic-content">
-          <div className="max-w-5xl" data-reveal>
-            <h1 className="hero-display">Progress without the <em>theatre.</em></h1>
-            <p className="hero-copy">For more than seven years, RV IT Consulting has helped teams solve practical technology challenges across strategy, engineering, talent, and enablement.</p>
-          </div>
-        </div>
-      </section>
+    <div className="rv-interior rv-about">
+      <PageIntro
+        title="People behind"
+        emphasis="the technology."
+        description="RV IT Consulting brings together engineering, recruitment, project support, and learning to help organizations get things done."
+        image="/assets/media/about-workshop.jpg"
+        action="Work with us"
+        href="/contactus"
+        variant="split"
+      />
 
       <section className="editorial-section">
         <div className="site-container grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <div data-reveal="left">
-            <p className="eyebrow">What guides our decisions</p>
             <h2 className="section-title mt-5">Technology only creates value when people can use, operate, and improve it.</h2>
             <div className="mt-8 space-y-5 text-lg leading-8 text-slate-600">
               <p>That is why our work goes beyond implementation. We align technology decisions to business priorities, involve the people closest to the work, and design for a sustainable operating reality.</p>
@@ -83,7 +81,6 @@ export default function AboutPage() {
         <div className="site-container relative">
           <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
             <div>
-              <p className="eyebrow">Client locations</p>
               <h2 className="section-title balanced mt-5">Clients located around the world.</h2>
             </div>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
@@ -116,6 +113,6 @@ export default function AboutPage() {
           <Link href="/contactus" className="button-light shrink-0">Meet our team <ArrowRight size={18} aria-hidden /></Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

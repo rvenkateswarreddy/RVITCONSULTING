@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PageIntro from "../components/PageIntro";
 import {
   ArrowRight,
   Check,
@@ -9,7 +10,6 @@ import {
   UsersRound,
 } from "lucide-react";
 import { createPageMetadata } from "../seo";
-import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Project Support",
@@ -68,26 +68,16 @@ const engagementSteps = [
 
 export default function ProjectSupportPage() {
   return (
-    <>
-      <section className="cinematic-hero support-hero support-enterprise-hero">
-        <CinematicMedia image="/assets/media/project-operations-real.jpg" alt="Technology operations team working together" priority position="center" />
-        <div className="cinematic-shade" />
-        <div className="site-container cinematic-content">
-          <div className="max-w-3xl" data-reveal>
-            <h1 className="hero-display">
-              Delivery support, built around <em>your project.</em>
-            </h1>
-            <p className="hero-copy">
-              Add experienced technical capability when your team needs focused help,
-              specialist skills, or dependable daily coverage.
-            </p>
-            <div className="hero-actions">
-              <Link href="/contactus?service=project-support" className="button-primary">Discuss your project <ArrowRight size={18} aria-hidden /></Link>
-              <a href="#support-models" className="button-ghost">Compare support models</a>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="rv-interior rv-project-support">
+      <PageIntro
+        title="Your project."
+        emphasis="Our hands on deck."
+        description="Experienced technical support for the work already in motion. Choose focused help, contract support, or daily coverage."
+        image="/assets/media/project-operations-real.jpg"
+        action="Compare support options"
+        href="#support-models"
+        variant="split"
+      />
 
       <section className="support-principles" aria-label="Project support principles">
         <div className="site-container support-principle-grid">
@@ -108,7 +98,6 @@ export default function ProjectSupportPage() {
         <div className="site-container">
           <div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-end">
             <div>
-              <p className="eyebrow">Ways to work with us</p>
               <h2 className="section-title mt-5">Coverage that fits the delivery need.</h2>
             </div>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
@@ -148,7 +137,6 @@ export default function ProjectSupportPage() {
       <section className="soft-section editorial-section">
         <div className="site-container grid gap-14 lg:grid-cols-[.78fr_1.22fr] lg:gap-24">
           <div data-reveal="left">
-            <p className="eyebrow">How support begins</p>
             <h2 className="section-title mt-5">A clear start. A visible working rhythm.</h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
               Project support works best when priorities, availability, and ownership are
@@ -172,7 +160,6 @@ export default function ProjectSupportPage() {
       <section className="editorial-section">
         <div className="site-container grid gap-12 lg:grid-cols-[.82fr_1.18fr] lg:items-start">
           <div data-reveal="left">
-            <p className="eyebrow">Technology coverage</p>
             <h2 className="section-title mt-5">Support for the work already in motion.</h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
               We can support implementation teams, product groups, platform owners, and
@@ -200,6 +187,6 @@ export default function ProjectSupportPage() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

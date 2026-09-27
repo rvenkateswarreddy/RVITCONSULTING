@@ -18,7 +18,7 @@ export default function Footer() {
           <div>
             <BrandLogo />
             <h2 className="display-font mt-5 max-w-xl text-2xl font-semibold leading-tight tracking-[-0.035em] text-[#081B33] md:text-3xl">
-              Technology, learning, and delivery support built around your next business outcome.
+              Technology consulting.<br />Recruitment. People.
             </h2>
             <Link href="/contactus" className="mt-6 inline-flex items-center gap-2 font-bold text-blue-700 hover:text-blue-900">
               Start a conversation <ArrowUpRight size={18} aria-hidden />

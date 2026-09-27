@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import PageIntro from "../components/PageIntro";
 import Image from "next/image";
 import { ArrowRight, CheckCircle, MapPin, ShieldCheck, Users } from "lucide-react";
-import CinematicMedia from "../components/CinematicMedia";
 import { functionsEndpoint } from "@/lib/functions-api";
 
 const initialForm = {
@@ -214,30 +214,16 @@ export default function CareersPage() {
     "w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-[#081B33] shadow-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-200";
 
   return (
-    <>
-      <section className="cinematic-hero careers-hero">
-        <CinematicMedia image="/assets/media/careers-collaboration.jpg" alt="Colleagues collaborating in a modern workplace" priority position="center" />
-        <div className="cinematic-shade" />
-        <div className="site-container cinematic-content">
-          <div className="max-w-4xl" data-reveal>
-            <h1 className="hero-display">
-              Your next challenge <em>starts here.</em>
-            </h1>
-            <p className="hero-copy">
-              We hire technology, project delivery, support, HR, and recruitment professionals
-              for active roles, contract needs, and upcoming client assignments.
-            </p>
-            <div className="hero-actions">
-              <a href="#open-roles" className="button-primary">
-                View hiring areas <ArrowRight size={18} aria-hidden />
-              </a>
-              <a href="#apply" className="button-ghost">
-                Apply now
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="rv-interior rv-careers">
+      <PageIntro
+        title="Bring your experience."
+        emphasis="Find your next move."
+        description="Explore technology, delivery, support, HR, and recruitment opportunities with RV IT and our clients."
+        image="/assets/media/careers-collaboration.jpg"
+        action="Explore hiring areas"
+        href="#open-roles"
+        variant="wide"
+      />
 
       <section className="border-b border-slate-200 bg-white">
         <div className="site-container grid md:grid-cols-3">
@@ -258,7 +244,6 @@ export default function CareersPage() {
         <div className="site-container">
           <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
             <div>
-              <p className="eyebrow">Hiring universe</p>
               <h2 className="section-title mt-5">Choose your domain and apply directly.</h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
                 Instead of showing only a few jobs, we organize hiring by technology and
@@ -313,7 +298,6 @@ export default function CareersPage() {
       <section className="py-20 md:py-28">
         <div className="site-container grid gap-14 lg:grid-cols-[.85fr_1.15fr]">
           <div>
-            <p className="eyebrow">Candidate journey</p>
             <h2 className="section-title mt-5">A practical process, without unnecessary noise.</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               Apply for the closest role area. Our team reviews your resume against active
@@ -353,7 +337,6 @@ export default function CareersPage() {
       <section id="apply" className="bg-[#F8FAFC] py-20 md:py-28">
         <div className="site-container grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
           <div>
-            <p className="eyebrow">Profile submission</p>
             <h2 className="section-title mt-5">Apply to RV IT.</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               Submit your resume once. We will review it for active and future technology,
@@ -408,6 +391,6 @@ export default function CareersPage() {
           </form>
         </div>
       </section>
-    </>
+    </div>
   );
 }

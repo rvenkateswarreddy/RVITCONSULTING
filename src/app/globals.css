@@ -654,13 +654,6 @@ textarea {
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes cookie-in { from { opacity: 0; transform: translateY(25px) scale(.98); } }
 
-@supports (animation-timeline: view()) {
-  main section:not(:first-child) > .site-container {
-    animation: section-reveal both;
-    animation-timeline: view();
-    animation-range: entry 8% cover 24%;
-  }
-}
 
 @keyframes section-reveal {
   from {
@@ -795,3 +788,21 @@ textarea {
     transform: none;
   }
 }
+
+/* Shared editorial finish */
+.site-header { background: #f4f3ef; border-bottom-color: #d7dbd2; backdrop-filter: none; }
+.site-header.is-scrolled { background: #f4f3eff5; box-shadow: 0 4px 18px #152b2310; }
+.nav-link { font-weight: 600; }
+.nav-link::after { background: #366858; }
+.nav-link:hover, .nav-link.is-active { color: #366858; }
+.nav-cta, .mobile-nav-cta { background: #284c3e; border-radius: 3px; box-shadow: none; }
+.nav-cta:hover, .mobile-nav-cta:hover { background: #366858; box-shadow: none; }
+.enterprise-footer { background: #eeeee8; }
+.eyebrow { color: #566b5d; font-weight: 500; font-size: 1rem; letter-spacing: 0; }
+.cinematic-shade::after, .about-hero::before, .industry-hero::before { display: none; }
+.button-primary, .button-light, .button-ghost { border-radius: 3px; box-shadow: none; }
+.bento-card { border-radius: 0; box-shadow: none; }
+.bento-card::after { display: none; }
+.scroll-progress { background: #638d71; box-shadow: none; height: 2px; }
+.cookie-card { border-radius: 4px; }
+main section > .site-container { animation: none; }

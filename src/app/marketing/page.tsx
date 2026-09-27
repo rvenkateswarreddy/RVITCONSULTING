@@ -1,8 +1,8 @@
 import Link from "next/link";
+import PageIntro from "../components/PageIntro";
 import Image from "next/image";
 import { ArrowRight, BriefcaseBusiness, CheckCircle, Globe2, Megaphone, Target, Users } from "lucide-react";
 import { createPageMetadata } from "../seo";
-import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Marketing Support",
@@ -54,31 +54,16 @@ const process = [
 
 export default function MarketingPage() {
   return (
-    <>
-      <section className="cinematic-hero marketing-hero">
-        <CinematicMedia video="/assets/media/marketing-hero.mp4" poster="/assets/media/marketing-team.jpg" priority position="center" />
-        <div className="cinematic-shade" />
-        <div className="site-container cinematic-content">
-          <div className="max-w-4xl" data-reveal>
-            <h1 className="hero-display">
-              Be understood. Be visible. <em>Be chosen.</em>
-            </h1>
-            <p className="hero-copy">
-              RV IT helps professionals and businesses present themselves clearly across
-              local and global markets, with practical positioning, profile improvement,
-              and market communication support.
-            </p>
-            <div className="hero-actions">
-              <Link href="/contactus?service=marketing-support" className="button-primary">
-                Request marketing support <ArrowRight size={18} aria-hidden />
-              </Link>
-              <a href="#global-markets" className="button-ghost">
-                View market reach
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="rv-interior rv-marketing">
+      <PageIntro
+        title="Make your work"
+        emphasis="worth noticing."
+        description="Positioning, profile development, and marketing support for businesses and professionals reaching their next audience."
+        image="/assets/media/marketing-presentation.jpg"
+        action="Discuss marketing support"
+        href="/contactus?service=marketing-support"
+        variant="split"
+      />
 
       <section className="border-b border-slate-200 bg-white">
         <div className="site-container grid md:grid-cols-3">
@@ -154,7 +139,6 @@ export default function MarketingPage() {
         <div className="site-container relative">
           <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
             <div>
-              <p className="eyebrow">Global market reach</p>
               <h2 className="section-title balanced mt-5">Support across local and international markets.</h2>
             </div>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
@@ -186,7 +170,6 @@ export default function MarketingPage() {
         <div className="site-container grid gap-14 lg:grid-cols-[.85fr_1.15fr]">
           <div>
             <Target className="text-blue-600" size={32} aria-hidden />
-            <p className="eyebrow mt-8">How support works</p>
             <h2 className="section-title mt-5">Clear positioning before outreach.</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               Good marketing starts with clarity. We help shape the message, audience, and
@@ -220,6 +203,6 @@ export default function MarketingPage() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

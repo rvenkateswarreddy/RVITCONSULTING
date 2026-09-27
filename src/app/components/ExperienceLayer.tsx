@@ -82,7 +82,7 @@ export default function ExperienceLayer() {
           </button>
           <div className="cookie-icon"><Cookie size={20} aria-hidden /></div>
           <div>
-            <p className="cookie-title">A simple, respectful cookie choice.</p>
+            <p className="cookie-title">Cookie preferences</p>
             <p className="cookie-copy">We use essential storage for site preferences. Optional analytics will only run when enabled.</p>
           </div>
           <div className="cookie-actions">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PageIntro from "../components/PageIntro";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -13,7 +14,6 @@ import {
   Users,
 } from "lucide-react";
 import { createPageMetadata } from "../seo";
-import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Enterprise Technology Consulting Services",
@@ -105,26 +105,16 @@ const technologyGroups = [
 
 export default function ServicesPage() {
   return (
-    <>
-      <section className="cinematic-hero">
-        <CinematicMedia video="/assets/media/services-engineering.mp4" poster="/assets/media/services-engineering-poster.png" position="center" />
-        <div className="cinematic-shade" />
-        <div className="site-container cinematic-content">
-          <div className="max-w-5xl" data-reveal>
-            <h1 className="hero-display">
-              From complex systems to <em>clear outcomes.</em>
-            </h1>
-            <p className="hero-copy">
-            From software engineering and cloud to data, AI, trainings, staffing, project support,
-            and marketing support, RV IT Consulting helps clients move from requirement to real execution.
-            </p>
-            <div className="hero-actions">
-              <Link href="/contactus" className="button-primary">Shape an engagement <ArrowRight size={18} aria-hidden /></Link>
-              <a href="#digital-engineering" className="button-ghost">Explore capabilities</a>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="rv-interior rv-services">
+      <PageIntro
+        title="Technology expertise."
+        emphasis="Put to work."
+        description="Software, cloud, data, and the people who deliver them. Bring us the problem you need to solve."
+        image="/assets/media/services-developers.jpg"
+        action="Explore our services"
+        href="#digital-engineering"
+        variant="wide"
+      />
 
       <section className="soft-section py-16">
         <div className="site-container grid gap-5 md:grid-cols-4">
@@ -179,7 +169,6 @@ export default function ServicesPage() {
         <div className="site-container relative">
           <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
             <div>
-              <p className="eyebrow !text-cyan-300">Technology coverage</p>
               <h2 className="display-font mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-5xl">
                 Broad capability without making the page feel crowded.
               </h2>
@@ -208,7 +197,7 @@ export default function ServicesPage() {
 
       <section className="soft-section py-20">
         <div className="site-container grid gap-10 lg:grid-cols-3">
-          <div><p className="eyebrow">How clients engage us</p><h2 className="section-title mt-5">The right shape for the work.</h2></div>
+          <div><h2 className="section-title mt-5">The right shape for the work.</h2></div>
           {[
             ["Advisory", "Senior guidance for strategy, architecture, operating models, and critical decisions."],
             ["Delivery", "Accountable teams that take defined outcomes from discovery through implementation."],
@@ -223,6 +212,6 @@ export default function ServicesPage() {
           <Link href="/contactus" className="button-light">Discuss your needs <ArrowRight size={18} aria-hidden /></Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

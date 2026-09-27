@@ -1,8 +1,8 @@
 import Link from "next/link";
+import PageIntro from "../components/PageIntro";
 import Image from "next/image";
 import { ArrowRight, BookOpenCheck, CheckCircle, ChevronDown, GraduationCap, Users } from "lucide-react";
 import { createPageMetadata } from "../seo";
-import CinematicMedia from "../components/CinematicMedia";
 
 export const metadata = createPageMetadata(
   "Corporate Trainings",
@@ -98,26 +98,16 @@ const formats = [
 
 export default function CorporateTrainingsPage() {
   return (
-    <>
-      <section className="cinematic-hero training-hero">
-        <CinematicMedia video="/assets/media/training-workshop.mp4" poster="/assets/media/training-workshop-poster.png" position="center" />
-        <div className="cinematic-shade" />
-        <div className="site-container cinematic-content">
-          <div className="max-w-5xl" data-reveal>
-            <h1 className="hero-display">
-              Learn it today. Apply it <em>tomorrow.</em>
-            </h1>
-            <p className="hero-copy">
-              We design corporate training programs around the tools, roles, and delivery
-              responsibilities your teams handle every day.
-            </p>
-            <div className="hero-actions">
-              <Link href="/contactus?service=corporate-trainings" className="button-primary">Build a learning path <ArrowRight size={18} aria-hidden /></Link>
-              <a href="#programs" className="button-ghost">Browse programs</a>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="rv-interior rv-corporate-trainings">
+      <PageIntro
+        title="Learn together."
+        emphasis="Go further."
+        description="Practical technology training shaped around your team’s roles, tools, and everyday work."
+        image="/assets/media/training-seminar.jpg"
+        action="Find a program"
+        href="#programs"
+        variant="split"
+      />
 
       <section className="editorial-section">
         <div className="site-container scroll-story training-story">
@@ -127,7 +117,6 @@ export default function CorporateTrainingsPage() {
           </div>
           <div className="scroll-story-copy">
             <div className="story-intro" data-reveal="right">
-              <p className="eyebrow">A learning path with a purpose</p>
               <h2 className="section-title mt-5">Not classroom theory. Capability your team can apply.</h2>
               <p>Every program is shaped around your audience, starting point, project goals, and technology stack.</p>
             </div>
@@ -149,7 +138,6 @@ export default function CorporateTrainingsPage() {
         <div className="site-container">
           <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
             <div>
-              <p className="eyebrow">Technology coverage</p>
               <h2 className="section-title mt-5">Training programs and technologies we can support.</h2>
             </div>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
@@ -197,6 +185,6 @@ export default function CorporateTrainingsPage() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

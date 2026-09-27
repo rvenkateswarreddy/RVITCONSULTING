@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PageIntro from "../components/PageIntro";
 import { createPageMetadata } from "../seo";
 
 export const metadata = createPageMetadata(
@@ -19,14 +20,13 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <>
-      <section className="bg-[#081B33] py-20 text-white">
-        <div className="site-container max-w-4xl">
-          <p className="eyebrow !text-cyan-300">Legal</p>
-          <h1 className="display-font mt-5 text-5xl font-semibold tracking-[-0.05em]">Website terms</h1>
-          <p className="mt-5 text-slate-300">Effective June 11, 2026</p>
-        </div>
-      </section>
+    <div className="rv-interior rv-legal">
+      <PageIntro
+        title="Website"
+        emphasis="terms."
+        description="Effective June 11, 2026"
+        variant="compact"
+      />
       <section className="py-20">
         <div className="site-container max-w-4xl">
           <p className="text-lg leading-8 text-slate-600">
@@ -46,6 +46,6 @@ export default function TermsPage() {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }

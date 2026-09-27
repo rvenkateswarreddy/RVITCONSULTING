@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { createPageMetadata } from "../seo";
-import CinematicMedia from "../components/CinematicMedia";
+import PageIntro from "../components/PageIntro";
 
 export const metadata = createPageMetadata(
   "Industries",
@@ -19,25 +19,16 @@ const industries = [
 
 export default function IndustriesPage() {
   return (
-    <>
-      <section className="industry-photo-hero text-white">
-        <CinematicMedia image="/assets/Industries/Finance.webp" alt="Financial services team at work" priority position="center" className="industry-hero-video" />
-        <div className="industry-video-shade" />
-        <div className="site-container industry-hero-grid">
-          <div className="max-w-3xl" data-reveal>
-            <h1 className="hero-display">Context changes <em>everything.</em></h1>
-            <p className="hero-copy">We combine technology depth with respect for the operating, regulatory, and customer realities of each sector.</p>
-          </div>
-          <div className="industry-mosaic" aria-label="Industries served" data-reveal="right">
-            {industries.map(([title, , image], index) => (
-              <figure key={title} className={`industry-mosaic-item item-${index + 1}`}>
-                <Image src={image} alt={`${title} industry`} fill className="object-cover" sizes="(max-width: 900px) 50vw, 25vw" />
-                <figcaption>{title}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="rv-interior rv-industries">
+      <PageIntro
+        title="Different industries."
+        emphasis="Different needs."
+        description="Technology shaped around the people you serve, the systems you depend on, and the way your industry works."
+        image="/assets/media/about-consultants.jpg"
+        action="Discuss your industry"
+        href="/contactus"
+        variant="wide"
+      />
 
       <section className="editorial-section">
         <div className="site-container space-y-20">
@@ -65,6 +56,6 @@ export default function IndustriesPage() {
           <p className="text-lg leading-8 text-slate-600">Our first job is to understand the economics, constraints, users, and systems already in play. That context shapes the roadmap, team, architecture, and pace of delivery.</p>
         </div>
       </section>
-    </>
+    </div>
   );
 }
