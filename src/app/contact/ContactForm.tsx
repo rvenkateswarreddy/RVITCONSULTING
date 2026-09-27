@@ -16,6 +16,7 @@ const initialForm = {
 };
 
 const serviceParamMap: Record<string, string> = {
+  "web-development": "Web development",
   "cloud-modernization": "Cloud modernization",
   "corporate-trainings": "Corporate training",
   "data-intelligence": "Data and analytics",

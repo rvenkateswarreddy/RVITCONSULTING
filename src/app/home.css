@@ -37,6 +37,18 @@
 .rv-solid-link { display: flex; align-items: center; justify-content: space-between; gap: 20px; background: #284a3b; color: white; padding: 19px 22px; font-size: 14px; }
 .rv-candidate-link { display: block; margin-top: 22px; font-size: 12px; line-height: 1.8; color: #58665c; }
 .rv-candidate-link span { margin-left: 6px; color: #213c2f; text-decoration: underline; text-underline-offset: 4px; }
+.rv-focus-links { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #bfcabb; }
+.rv-focus-links > a { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 30px 25px; transition: background 200ms; }
+.rv-focus-links > a:first-child { border-right: 1px solid #bfcabb; padding-left: 0; }
+.rv-focus-links > a:hover { background: #e5e9df; }
+.rv-focus-links > a > span:first-child { font-size: 24px; letter-spacing: -.045em; }
+.rv-focus-links > a > span:last-child { display: flex; align-items: center; gap: 14px; font-size: 12px; }
+.rv-web-development { padding-bottom: 132px; scroll-margin-top: 110px; }
+.rv-web-development h2 { font-size: clamp(40px,4.5vw,68px); line-height: 1.08; }
+.rv-web-grid { display: grid; grid-template-columns: 1fr 1.16fr; }
+.rv-web-copy { background: #ece2d7; }
+.rv-web-copy .rv-solid-link { background: #694c3c; }
+.rv-web-copy li { border-color: #cbbbad; }
 .rv-services { padding-bottom: 130px; }
 .rv-services-heading { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 60px; }
 .rv-services-heading > p { max-width: 340px; color: #657069; font-size: 16px; line-height: 1.8; }
@@ -76,6 +88,14 @@
   .rv-service-browser { gap: 35px; }
 }
 @media (max-width: 760px) {
+  .rv-focus-links { grid-template-columns: 1fr; }
+  .rv-focus-links > a, .rv-focus-links > a:first-child { padding: 23px 0; border-right: 0; }
+  .rv-focus-links > a:first-child { border-bottom: 1px solid #bfcabb; }
+  .rv-focus-links > a > span:first-child { font-size: 20px; }
+  .rv-focus-links > a > span:last-child { font-size: 11px; gap: 7px; }
+  .rv-web-grid { grid-template-columns: 1fr; }
+  .rv-web-development { padding-bottom: 70px; }
+  .rv-web-development h2 { font-size: 42px; }
   .rv-home .site-container { width: calc(100% - 36px); }
   .rv-opening { padding-top: 40px; }
   .rv-opening h1 { font-size: clamp(38px,9vw,68px); line-height: 1.12; }
