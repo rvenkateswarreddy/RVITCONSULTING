@@ -9,6 +9,10 @@
 .rv-opening h1 em { color: #366858; }
 .rv-opening-bottom { display: flex; justify-content: space-between; align-items: end; gap: 32px; padding: 40px 0 42px 13%; }
 .rv-opening-bottom p { max-width: 500px; font-size: 15px; line-height: 1.8; color: #57615c; }
+.rv-markets { margin-bottom: 28px; padding: 26px 32px; background: #284c3e; color: #fff; }
+.rv-home .rv-markets h2 { margin: 0 0 18px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #d9edb1; }
+.rv-markets ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
+.rv-markets li { font-size: clamp(20px, 2.2vw, 32px); font-weight: 600; letter-spacing: -.035em; line-height: 1.3; }
 .rv-text-link { display: inline-flex; align-items: center; gap: 30px; padding-bottom: 10px; border-bottom: 1px solid currentColor; font-size: 15px; font-weight: 600; }
 .rv-text-link svg, .rv-solid-link svg { transition: transform 250ms; }
 .rv-text-link:hover svg, .rv-solid-link:hover svg { transform: translate(3px,-3px); }
@@ -88,6 +92,9 @@
   .rv-service-browser { gap: 35px; }
 }
 @media (max-width: 760px) {
+  .rv-markets { padding: 24px 20px; margin-bottom: 22px; }
+  .rv-markets ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; }
+  .rv-markets li { font-size: clamp(18px, 4.6vw, 28px); }
   .rv-focus-links { grid-template-columns: 1fr; }
   .rv-focus-links > a, .rv-focus-links > a:first-child { padding: 23px 0; border-right: 0; }
   .rv-focus-links > a:first-child { border-bottom: 1px solid #bfcabb; }

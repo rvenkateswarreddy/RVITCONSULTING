@@ -73,7 +73,7 @@ export default function ProjectSupportPage() {
         title="Your project."
         emphasis="Our hands on deck."
         description="Experienced technical support for the work already in motion. Choose focused help, contract support, or daily coverage."
-        image="/assets/media/project-operations-real.jpg"
+        image="/assets/media/technical-support-unbranded.webp"
         action="Compare support options"
         href="#support-models"
         variant="split"

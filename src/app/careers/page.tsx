@@ -219,7 +219,7 @@ export default function CareersPage() {
         title="Bring your experience."
         emphasis="Find your next move."
         description="Explore technology, delivery, support, HR, and recruitment opportunities with RV IT and our clients."
-        image="/assets/media/careers-collaboration.jpg"
+        image="/assets/media/team-collaboration-unbranded.webp"
         action="Explore hiring areas"
         href="#open-roles"
         variant="wide"

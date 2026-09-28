@@ -7,7 +7,7 @@ import { ArrowUpRight, Pause, Play } from "lucide-react";
 
 const offerings = [
   { title: "Digital engineering", copy: "Web, mobile, and enterprise applications. Built around the way your business actually works.", image: "/assets/media/services-developers.jpg", href: "/services#digital-engineering" },
-  { title: "Cloud & data", copy: "Modern infrastructure, dependable data pipelines, and clearer information for better decisions.", image: "/assets/media/project-operations-real.jpg", href: "/services#cloud-modernization" },
+  { title: "Cloud & data", copy: "Modern infrastructure, dependable data pipelines, and clearer information for better decisions.", image: "/assets/media/technical-support-unbranded.webp", href: "/services#cloud-modernization" },
   { title: "Project support", copy: "Experienced specialists working alongside your team to resolve blockers and move delivery forward.", image: "/assets/media/home-delivery-team.jpg", href: "/project-support" },
   { title: "Corporate learning", copy: "Practical training that gives your teams the confidence to put new skills to work.", image: "/assets/media/training-seminar.jpg", href: "/corporate-trainings" },
   { title: "Marketing", copy: "Creative and technical support to help your business reach the people who matter.", image: "/assets/media/marketing-team.jpg", href: "/marketing" },
@@ -36,7 +36,7 @@ export default function HomeShowcase({ mode }: { mode: "film" | "services" }) {
         <source src="/assets/media/home-collaboration.mp4" type="video/mp4" />
       </video>
       <div className="rv-film-word" aria-hidden>Forward,<br /><em>together.</em></div>
-      <a href="#us-recruitment" className="rv-film-recruitment"><span>US IT recruitment</span><ArrowUpRight size={25} aria-hidden /></a>
+      <a href="#us-recruitment" className="rv-film-recruitment"><span>USA IT recruitment</span><ArrowUpRight size={25} aria-hidden /></a>
       <button type="button" className="rv-film-control" onClick={() => {
         if (video.current?.paused) void video.current.play().catch(() => undefined);
         else video.current?.pause();

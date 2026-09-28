@@ -5,7 +5,7 @@ import { createPageMetadata, defaultDescription } from "./seo";
 import HomeShowcase from "./components/HomeShowcase";
 import "./home.css";
 
-export const metadata = createPageMetadata("Technology & US recruitment", defaultDescription, "/");
+export const metadata = createPageMetadata("Technology & USA recruitment", defaultDescription, "/");
 
 export default function Home() {
   return (
@@ -13,23 +13,32 @@ export default function Home() {
       <section className="rv-opening site-container">
         <h1><span>Good people.</span><span>Better <em>possibilities.</em></span></h1>
         <div className="rv-opening-bottom">
-          <p>US IT recruitment. Web development. Technology consulting.<br />The people and expertise to move your next project forward.</p>
+          <p>USA IT recruitment. Web development. Technology consulting.<br />The people and expertise to move your next project forward.</p>
           <Link className="rv-text-link" href="/contactus">Let’s work together <ArrowUpRight size={23} aria-hidden /></Link>
         </div>
+        <section className="rv-markets" aria-labelledby="rv-markets-title">
+          <h2 id="rv-markets-title">Our focus markets</h2>
+          <ul>
+            <li>USA</li>
+            <li>Finland</li>
+            <li>Luxembourg</li>
+            <li>Greece</li>
+          </ul>
+        </section>
         <HomeShowcase mode="film" />
         <nav className="rv-focus-links" aria-label="Explore our featured services">
-          <a href="#us-recruitment"><span>US recruitment</span><span>Find your next hire <ArrowUpRight size={21} aria-hidden /></span></a>
+          <a href="#us-recruitment"><span>USA recruitment</span><span>Find your next hire <ArrowUpRight size={21} aria-hidden /></span></a>
           <a href="#web-development"><span>Web development</span><span>Build your next website <ArrowUpRight size={21} aria-hidden /></span></a>
         </nav>
       </section>
 
       <section className="rv-recruitment site-container" id="us-recruitment">
         <div className="rv-recruitment-title">
-          <h2>US recruitment.<br /><em>A people business.</em></h2>
-          <p>Behind every successful project is a team that fits. We help US businesses find the technology specialists they need — and help those specialists find their next opportunity.</p>
+          <h2>USA recruitment.<br /><em>A people business.</em></h2>
+          <p>Behind every successful project is a team that fits. We help USA businesses find the technology specialists they need — and help those specialists find their next opportunity.</p>
         </div>
         <div className="rv-recruitment-grid">
-          <div className="rv-portrait"><Image src="/assets/media/careers-collaboration.jpg" alt="Colleagues discussing their work" fill sizes="(max-width: 760px) 100vw, 55vw" /><span>People make the difference.</span></div>
+          <div className="rv-portrait"><Image src="/assets/media/team-collaboration-unbranded.webp" alt="Colleagues discussing their work" fill sizes="(max-width: 760px) 100vw, 55vw" /><span>People make the difference.</span></div>
           <div className="rv-hiring">
             <h3>The right experience.<br />The right fit.</h3>
             <p>Tell us what you are building. We’ll work with you to understand the role, the technical requirements, and the team behind it.</p>

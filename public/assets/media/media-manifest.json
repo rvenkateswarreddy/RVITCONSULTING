@@ -1,7 +1,21 @@
 {
-  "updated": "2026-08-02",
+  "updated": "2026-09-28",
   "note": "Temporary demonstration media. Reconfirm source attribution and final commercial use before launch.",
   "assets": [
+    {
+      "file": "team-collaboration-unbranded.webp",
+      "page": "Home people feature and Careers hero",
+      "source": "Built-in image generation tool; see generated-images.md for prompt",
+      "creator": "AI-generated",
+      "status": "active illustrative media; no company logos or ID badges"
+    },
+    {
+      "file": "technical-support-unbranded.webp",
+      "page": "Project support hero and Home cloud and data showcase",
+      "source": "Built-in image generation tool; see generated-images.md for prompt",
+      "creator": "AI-generated",
+      "status": "active illustrative media; no company logos or ID badges"
+    },
     {
       "file": "home-collaboration.mp4",
       "page": "Home hero",
