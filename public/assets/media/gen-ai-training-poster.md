@@ -1,0 +1,9 @@
+# Generative AI training campaign
+
+Created with the built-in image generation tool on October 26, 2026. Original RV IT campaign artwork. PNG master and optimized WebP are saved alongside this file.
+
+Visual reference research: Microsoft AI Skills Fest and Microsoft Learn AI skilling campaigns; used for broad typography and abstract imagery inspiration, without copying brand assets or implying affiliation.
+
+## Final prompt
+
+Use case: ads-marketing. Create a polished original promotional poster for RV IT Consulting's Generative AI training, landscape 1536x1024, suitable as a website campaign image and social promotional graphic. Art direction: enterprise technology campaign, beautifully typeset large editorial sans serif, exceptional whitespace, precise grid, sophisticated deep forest green background, warm ivory typography, pale lime accents. Right third: a stunning sculptural translucent glass ribbon forming an ascending open loop, layered luminous emerald and lime surfaces, realistic sophisticated studio 3D lighting, subtle fine dotted field. Left two thirds: strong clear text hierarchy, absolutely legible. Top small brand text "RV IT CONSULTING". Small eyebrow "LEARN. BUILD. APPLY." Main very large headline over three lines "Generative AI" then "Training" (make this a clear training advertisement). Below, supporting line "Practical skills for professionals and teams." Bottom small topic row "AI foundations  /  Prompting  /  Real-world applications". Bottom footer "Explore training at rvit.co.in". Generous 7% safe margins. Render exact text cleanly with no other text. Original composition; no other company logos, no invented certifications, no dates, no pricing, no claims about placement or partnerships, no humanoid robots, no brain or circuit clipart, no UI mockup frame. The final should look like an art-directed premium technology learning campaign, not a crowded course flyer.

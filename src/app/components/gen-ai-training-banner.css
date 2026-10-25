@@ -1,0 +1,13 @@
+.ai-training-banner { padding: 28px 0; background: #f4f3ef; color: #183b2f; }
+.ai-training-banner .ai-training-banner-inner { width: min(calc(100% - 48px), 960px); margin-inline: auto; }
+.ai-training-poster { display: block; width: 100%; height: auto; }
+.ai-training-banner-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px; background: #e5e9df; }
+.ai-training-banner-footer p { margin: 0; font-size: 14px; line-height: 1.7; }
+.ai-training-banner a { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; flex-shrink: 0; min-height: 48px; padding: 15px 22px; background: #183b2f; color: #fff; font-size: 13px; font-weight: 600; }
+.ai-training-banner a:hover { background: #285b46; }
+.ai-training-banner a:focus-visible { outline: 3px solid #183b2f; outline-offset: 4px; }
+@media (max-width: 760px) {
+  .ai-training-banner { padding: 18px 0; }
+  .ai-training-banner .ai-training-banner-inner { width: calc(100% - 36px); }
+  .ai-training-banner-footer { flex-direction: column; align-items: stretch; gap: 16px; padding: 20px; }
+}

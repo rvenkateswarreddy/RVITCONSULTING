@@ -16,6 +16,7 @@ const initialForm = {
 };
 
 const serviceParamMap: Record<string, string> = {
+  "generative-ai-training": "Generative AI training",
   "web-development": "Web development",
   "cloud-modernization": "Cloud modernization",
   "corporate-trainings": "Corporate training",
@@ -43,6 +44,7 @@ const serviceOptions = [
   "Data engineering",
   "Data Science",
   "Generative AI",
+  "Generative AI training",
   "Power BI",
   "Cybersecurity",
   "Security and resilience",

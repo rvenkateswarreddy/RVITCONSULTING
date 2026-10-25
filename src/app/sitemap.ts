@@ -7,6 +7,7 @@ const routes = [
   "/services",
   "/marketing",
   "/corporate-trainings",
+  "/generative-ai-training",
   "/project-support",
   "/industries",
   "/careers",

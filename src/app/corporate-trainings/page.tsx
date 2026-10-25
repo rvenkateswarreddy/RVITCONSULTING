@@ -1,12 +1,14 @@
 import Link from "next/link";
 import PageIntro from "../components/PageIntro";
+import GenAITraining from "../components/GenAITraining";
+import GenAITrainingBanner from "../components/GenAITrainingBanner";
 import Image from "next/image";
 import { ArrowRight, BookOpenCheck, CheckCircle, ChevronDown, GraduationCap, Users } from "lucide-react";
 import { createPageMetadata } from "../seo";
 
 export const metadata = createPageMetadata(
-  "Corporate Trainings",
-  "Corporate technology trainings for teams across cloud, data, AI, DevOps, full stack development, mobile, and enterprise platforms.",
+  "Generative AI & Corporate Training",
+  "Build practical generative AI skills with RV IT. Explore role-based training in AI foundations, prompting, AI applications, and responsible adoption, alongside cloud, data, and engineering programs.",
   "/corporate-trainings",
 );
 
@@ -99,15 +101,18 @@ const formats = [
 export default function CorporateTrainingsPage() {
   return (
     <div className="rv-interior rv-corporate-trainings">
+      <GenAITrainingBanner />
       <PageIntro
-        title="Learn together."
-        emphasis="Go further."
-        description="Practical technology training shaped around your team’s roles, tools, and everyday work."
+        title="Build the skills."
+        emphasis="Shape what’s next."
+        description="From generative AI to cloud and engineering: practical technology training shaped around your team’s roles, tools, and everyday work."
         image="/assets/media/training-seminar.jpg"
-        action="Find a program"
-        href="#programs"
+        action="Explore Generative AI training"
+        href="#generative-ai"
         variant="split"
       />
+
+      <GenAITraining detailed />
 
       <section className="editorial-section">
         <div className="site-container scroll-story training-story">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { createPageMetadata, defaultDescription } from "./seo";
 import HomeShowcase from "./components/HomeShowcase";
+import GenAITrainingBanner from "./components/GenAITrainingBanner";
 import "./home.css";
 
 export const metadata = createPageMetadata("Technology & USA recruitment", defaultDescription, "/");
@@ -16,8 +17,13 @@ export default function Home() {
           <p>USA IT recruitment. Web development. Technology consulting.<br />The people and expertise to move your next project forward.</p>
           <Link className="rv-text-link" href="/contactus">Let’s work together <ArrowUpRight size={23} aria-hidden /></Link>
         </div>
+        <HomeShowcase mode="film" />
         <section className="rv-markets" aria-labelledby="rv-markets-title">
-          <h2 id="rv-markets-title">Our focus markets</h2>
+          <p className="rv-markets-label">Our focus markets</p>
+          <div className="rv-markets-heading">
+            <h2 id="rv-markets-title">Global outlook.<br /><em>Personal commitment.</em></h2>
+            <p>Our focus markets span<br />North America and Europe.</p>
+          </div>
           <ul>
             <li>USA</li>
             <li>Finland</li>
@@ -25,12 +31,13 @@ export default function Home() {
             <li>Greece</li>
           </ul>
         </section>
-        <HomeShowcase mode="film" />
         <nav className="rv-focus-links" aria-label="Explore our featured services">
           <a href="#us-recruitment"><span>USA recruitment</span><span>Find your next hire <ArrowUpRight size={21} aria-hidden /></span></a>
           <a href="#web-development"><span>Web development</span><span>Build your next website <ArrowUpRight size={21} aria-hidden /></span></a>
         </nav>
       </section>
+
+      <GenAITrainingBanner />
 
       <section className="rv-recruitment site-container" id="us-recruitment">
         <div className="rv-recruitment-title">
